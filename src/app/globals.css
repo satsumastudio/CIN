@@ -1,0 +1,249 @@
+@import "tailwindcss";
+
+/* ============================================================================
+   VERSION 2 — flat, block-based charity layout.
+   Where v1 leans editorial (organic shapes, soft gradients, drifting motion),
+   v2 is built from solid full-width colour bands, hard-edged cards and chunky
+   type: the visual language of a large UK charity site, optimised for
+   scanning and clear calls to action rather than atmosphere.
+   ========================================================================= */
+
+:root {
+  --background: #ffffff;
+  --foreground: #0c0047;
+
+  /* ------------------------------------------------------------------
+     Childhood is Now brand palette — sampled directly from the swatches
+     in the brand guidelines PDF and cross-checked against the logo
+     artwork, NOT taken from the hex labels printed in that document.
+     Those labels are unreliable: the red is captioned "EE7467" (a soft
+     coral) while its own swatch, and every red in the logo, is a bright
+     #EC2123. The grey's 50% tint is captioned "EEFF64", a lime yellow.
+     Swatch + logo agree with each other, so they are the source of truth.
+     ------------------------------------------------------------------ */
+
+  /* Bold palette */
+  --color-brand-blue: #0c0047;
+  --color-brand-red: #ec2123;
+  --color-brand-green: #00d5a9;
+  --color-brand-yellow: #fdca09;
+  --color-brand-grey: #001c27;
+
+  /* 50% tints */
+  --color-blue-50t: #67618d;
+  --color-red-50t: #f69091;
+  --color-green-50t: #7fead3;
+  --color-yellow-50t: #fee484;
+  --color-grey-50t: #7f8d92;
+
+  /* 30% tints (pastel palette) */
+  --color-blue-30t: #9692b3;
+  --color-red-30t: #f9bcbd;
+  --color-green-30t: #b2f2e5;
+  --color-yellow-30t: #feefb5;
+  --color-grey-30t: #b2babe;
+
+  /* 10% tints */
+  --color-blue-10t: #d3d1e0;
+  --color-red-10t: #fde8e9;
+  --color-green-10t: #e5faf6;
+  --color-yellow-10t: #fffaeb;
+  --color-grey-10t: #eaeced;
+
+  /* Accessible derivations. The brand red reaches only 4.37:1 against
+     white — fine for large text (needs 3:1) but short of the 4.5:1 body
+     minimum, so small text and buttons use a darkened red instead. */
+  --color-red-deep: #c21719;   /* 6.12:1 on white */
+  --color-ink-mid: #00323f;    /* 13.74:1 with white */
+
+  /* Soft page ground.
+     The brand grey is #001C27 — hue 197, a teal-black — so its tints carry
+     a cold teal cast. Against ink at hue 250 (violet) and warm pastels at
+     48 and 359, the 10% grey shared an undertone with nothing on the page
+     and read as dingy rather than designed. This is the ink itself at 5%
+     over white: hue 255, so it sits directly alongside the navy, and a
+     lighter ground overall (96% vs 92%) which keeps the section quiet. */
+  --color-soft: #f3f2f6;       /* 17.03:1 with navy */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-brand-blue: var(--color-brand-blue);
+  --color-brand-red: var(--color-brand-red);
+  --color-brand-green: var(--color-brand-green);
+  --color-brand-yellow: var(--color-brand-yellow);
+  --color-brand-grey: var(--color-brand-grey);
+
+  --color-blue-50t: var(--color-blue-50t);
+  --color-red-50t: var(--color-red-50t);
+  --color-green-50t: var(--color-green-50t);
+  --color-yellow-50t: var(--color-yellow-50t);
+  --color-grey-50t: var(--color-grey-50t);
+
+  --color-blue-30t: var(--color-blue-30t);
+  --color-red-30t: var(--color-red-30t);
+  --color-green-30t: var(--color-green-30t);
+  --color-yellow-30t: var(--color-yellow-30t);
+  --color-grey-30t: var(--color-grey-30t);
+
+  --color-blue-10t: var(--color-blue-10t);
+  --color-red-10t: var(--color-red-10t);
+  --color-green-10t: var(--color-green-10t);
+  --color-yellow-10t: var(--color-yellow-10t);
+  --color-grey-10t: var(--color-grey-10t);
+  --color-soft: var(--color-soft);
+
+  --color-red-deep: var(--color-red-deep);
+  --color-ink-mid: var(--color-ink-mid);
+
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+}
+
+/* The scroll canvas is painted from <html>, not <body>, so with html unset
+   it fell back to the white page ground. Every page closes on the navy
+   footer, so overscrolling past the bottom flashed a white strip beneath it.
+   Navy here matches the footer and reads as the ground the page sits on. */
+html {
+  background: var(--color-brand-blue);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* ---------------------------------------------------------------------------
+   V2 design system — light, bold, playful.
+
+   The ground stays white so colour lands as punctuation rather than
+   wallpaper: full-bleed slabs of a single tint read municipal, whereas the
+   brand's four strong colours used as accents, rules and numerals read
+   confident and warm. One deep-navy moment at the close carries the weight
+   that the bands were previously doing across the whole page.
+   ------------------------------------------------------------------------ */
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Hand-placed tilts. Kept to 1-2.5deg: enough to feel arranged by a person
+   rather than snapped to a grid, small enough to stay composed.
+
+   These set `transform` directly rather than through Tailwind's transform
+   utilities, so the hover states below are written in plain CSS too —
+   stacking a raw `transform` declaration with Tailwind's `hover:rotate-0`
+   or `hover:-translate-y-1` on the same element is a same-specificity tie
+   that only resolves correctly by source order, which is fragile. Defining
+   both halves here removes the ambiguity. */
+.tilt-l { transform: rotate(-2deg); transition: transform 0.3s ease; }
+.tilt-r { transform: rotate(1.75deg); transition: transform 0.3s ease; }
+.tilt-sl { transform: rotate(-1deg); transition: transform 0.3s ease; }
+.tilt-sr { transform: rotate(1deg); transition: transform 0.3s ease; }
+
+/* Standalone tilted photos (hero, mission, etc.): settle level and lift
+   slightly on hover, like picking a printed photo up off a desk. */
+.group:hover .tilt-l,
+.group:hover .tilt-r {
+  transform: rotate(0deg);
+}
+
+/* Tilted value cards: straighten and lift together as one motion. */
+.tilt-hover.tilt-sl:hover,
+.tilt-hover.tilt-sr:hover {
+  transform: rotate(0deg) translateY(-4px);
+}
+
+/* A colour block sitting behind a tilted photo, rotated the other way, so a
+   sliver of brand colour peeks out on two edges. */
+.stack-behind {
+  position: relative;
+}
+.stack-behind > .stack-block {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.stack-behind > .stack-front {
+  position: relative;
+  z-index: 1;
+}
+
+/* Thin brand rule used to head a column or card. */
+.rule-top {
+  height: 6px;
+  width: 56px;
+  border-radius: 999px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .tilt-l, .tilt-r, .tilt-sl, .tilt-sr { transform: none; }
+}
+
+/* ---------------------------------------------------------------------------
+   Micro-interactions.
+
+   Small, consistent feedback rather than decoration: a button presses in
+   when clicked, an arrow nudges forward on hover, a focus ring is always
+   visible for keyboard users. Nothing here should be noticed on its own —
+   it should just make the page feel handled rather than static.
+   ------------------------------------------------------------------------ */
+
+.focus-ring {
+  outline: none;
+}
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-brand-blue);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Same idea for text sitting on the navy footer/CTA, where a navy ring
+   would be invisible against a navy background. */
+.focus-ring-invert {
+  outline: none;
+}
+.focus-ring-invert:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Arrow text links (e.g. "See everything we do →"): the arrow glyph is the
+   last character, so nudging the whole element is what reads as motion. */
+.link-arrow {
+  display: inline-flex;
+  transition: transform 0.2s ease;
+}
+.link-arrow:hover {
+  transform: translateX(3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link-arrow {
+    transition: none;
+  }
+  .link-arrow:hover {
+    transform: none;
+  }
+}

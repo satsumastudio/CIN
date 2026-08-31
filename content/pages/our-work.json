@@ -1,0 +1,128 @@
+{
+  "pageBand": {
+    "title": "Our work",
+    "standfirst": "Current work, and examples of what we have each led over the last two decades."
+  },
+  "intro": {
+    "heading": "A track record built over two decades",
+    "paragraph": "From national programme design and RCT-backed evaluation to regional leadership on Best Start in Life, our work spans the full width of the early years system."
+  },
+  "trackRecord": {
+    "items": [
+      "National Centre for Family Hubs regional leadership and contribution to national support on Best Start in Life and Inclusion Toolkit (Local Government Association)",
+      "Finalist for a Health Services Journal Award (Reducing Inequalities and Improving Outcomes for Children and Young People) and winner of the 2025 Excellence in Health Creation Award for Best Health-Creating Grassroots Approach to Reducing the Impact of Long-Term Conditions",
+      "Strategic programme development to address health inequalities for babies, children and young people within a London borough, recognised as good practice across North-West London (NWL) in asthma prevention and care through the Getting It Right First Time (GIRFT) assessment",
+      "Leadership of the redevelopment, evaluation and scaling of NSPCC's Pregnancy in Mind (PiM) programme",
+      "Programme development leadership for the translation and implementation of an innovative U.S. evidence-based parent infant relationship approach adopted by the NSPCC to improve permanency decisions and the mental health of children under 5 in care proceedings due to maltreatment, supported by an NIHR-funded RCT",
+      "Development, training and national rollout of recognised evidence-informed Home Learning Environment programmes, including NCB's Making it REAL (Raising Early Achievement in Literacy) and Save the Children UK's Families Connect, supported by RCT evidence of impact on children's social and emotional development and parental self-efficacy",
+      "Programme and project management of C4EO (Centre for Excellence and Outcomes in Children and Young People's Services)",
+      "Senior involvement in the National Evaluation of Sure Start (NESS) and over eight years of subsequent consultancy support to Sure Start Children's Centres, NHS and local authorities"
+    ]
+  },
+  "advisory": {
+    "heading": "Advisory group memberships",
+    "current": [
+      {
+        "title": "Advisory Group member, The Rise Study (NIHR-funded), Bristol University",
+        "description": "A systems approach to improving young people's mental health and pathways into adulthood."
+      },
+      {
+        "title": "Policy and Practice Advisory Group member, Prudence Trust Research Fellowship, King's College London",
+        "description": "How to shift the dial for depression and anxiety prevention in young people — re-imagining risk, personalised interventions and scalability."
+      },
+      {
+        "title": "Advisory Panel member, Industry Implementation Council, The Children's Digital Wellbeing Framework for Children",
+        "description": "FUNdamentally Children."
+      }
+    ],
+    "previous": [
+      { "title": "Expert Reference Group member, Parent Infant Foundation", "description": "" },
+      {
+        "title": "Steering Committee Member, ADVANCE Study (NIHR-funded), King's College London",
+        "description": "Advancing interventions for men in substance misuse treatment who perpetrate intimate partner violence."
+      },
+      { "title": "Advisory Group Member, Early Years Funders Group, Collective Futures", "description": "" },
+      { "title": "Advisory Group Member, Stronger Practice Hubs, NCB", "description": "" }
+    ]
+  },
+  "publicationsSection": {
+    "heading": "Publications",
+    "items": [
+      {
+        "citation": "Williams, L. (2024/25)",
+        "description": "Director and editor of Save the Children's Early Years Knowledge Bank.",
+        "link": "https://www.savethechildren.org.uk/what-we-do/child-poverty/uk-child-poverty/early-years/knowledge-bank"
+      },
+      {
+        "citation": "Williams, L. (2025)",
+        "description": "Commissioner and editor of Save the Children's Listening as a Way of Life leaflets updated in partnership with NCB: Supporting parents to listen to their baby and young child and Listening to babies and very young children.",
+        "link": ""
+      },
+      {
+        "citation": "King, J. & Williams, L. (2022)",
+        "description": "Co-author of chapter: Adapting the Families Connect programme for three-year-olds; a case study, The theory and practice of voice in early childhood, An International Exploration, Routledge.",
+        "link": "https://www.routledge.com/The-Theory-and-Practice-of-Voice-in-Early-Childhood-An-International-Exploration/Arnott-Wall/p/book/9780367201098"
+      },
+      {
+        "citation": "Harrington, L., McElearney, A. & Hyde-Dryden, G. (2021)",
+        "description": "Adapting the Pregnancy in Mind (PiM) support service to virtual delivery. International Journal of Birth and Parent Education, Vol. 8, Issue 3.",
+        "link": ""
+      },
+      {
+        "citation": "Williams, L. (2021)",
+        "description": "Families Connect Facilitator Delivery Manual, The Save the Children Fund. Author of the updated programmes for 3–6-year-olds and a Blended Learning version for online delivery to families during COVID-19.",
+        "link": "https://www.peeple.org.uk/families-connect-programme"
+      },
+      {
+        "citation": "Paula Gow, Louise Harrington, Theresa Park and Lindsay Rautman (2020)",
+        "description": "Using strengths-based video-feedback techniques to build parent-child attunement: Research In Practice, June 2020.",
+        "link": ""
+      },
+      {
+        "citation": "Williams, L. (2016)",
+        "description": "Contributor to Ready to listen: Why, when and how to involve young children and their families in local decisions about health and wellbeing.",
+        "link": "https://www.ncb.org.uk/sites/default/files/uploads/files/Ready%2520to%2520listen%25202016.pdf"
+      },
+      {
+        "citation": "Stevenson, F., Lloyd, N., Harrington, L & Wallace, P. (2013)",
+        "description": "Use of electronic patient records for research: views of patients and staff in general practice, Family Practice, Volume 30, Issue 2, Pages 227-232.",
+        "link": "https://doi.org/10.1093/fampra/cms069"
+      },
+      {
+        "citation": "Lloyd, N. & Harrington, L. (2012)",
+        "description": "The challenges to effective outcome evaluation of a national, multi-agency initiative: the experience of Sure Start Evaluation, 18(1), pp. 93–109.",
+        "link": ""
+      },
+      {
+        "citation": "Moran, N. & Harrington, L. (2006)",
+        "description": "Smoking cessation services in Sure Start Local Programmes: findings from local evaluations. National Evaluation of Sure Start (NESS), Birkbeck.",
+        "link": ""
+      },
+      {
+        "citation": "Harrington, L., Lloyd, N. & Ellison, S. (2005)",
+        "description": "Implementing and Managing your Sure Start Local Programme Evaluation, National Evaluation of Sure Start (NESS), Birkbeck.",
+        "link": ""
+      }
+    ]
+  },
+  "presentationsSection": {
+    "heading": "Presentations",
+    "items": [
+      {
+        "title": "Research in the Family Justice System: The Story of the London Infant and Family Team",
+        "presenter": "Louise Harrington",
+        "venue": "NSPCC, 9th October 2018, Nuffield Justice Observatory Conference 'Born into Care: Infants in the Family Justice System'"
+      },
+      {
+        "title": "Looking after infant mental health",
+        "presenter": "Louise Harrington",
+        "venue": "Evidence from research conducted on what works in engaging families with under 5s in family support services, NLH Partnership, Spring 2013, All Party Parliamentary Group (APPG) Foundation Years — Sure Start Children's Centres"
+      }
+    ]
+  },
+  "cta": {
+    "heading": "Interested in working together?",
+    "paragraph": "Tell us about your system and what you're trying to shift.",
+    "buttonLabel": "Get in touch"
+  }
+}

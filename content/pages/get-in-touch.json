@@ -1,0 +1,19 @@
+{
+  "pageBand": {
+    "title": "Get in touch",
+    "standfirst": "We're happy to have an exploratory conversation before anything formal."
+  },
+  "form": {
+    "heading": "Tell us what you're working on",
+    "intro": "Complete the form, or email us directly using whichever route fits best.",
+    "cardHeading": "Send us a message"
+  },
+  "contactRoutes": [
+    {
+      "title": "Email us directly",
+      "body": "The quickest way to reach both founders. We aim to reply within two working days.",
+      "email": "info@childhoodisnow.co.uk"
+    }
+  ],
+  "legalNote": "Childhood is Now Ltd, company number 16954121. We only use the information you provide to respond to your enquiry — see our"
+}

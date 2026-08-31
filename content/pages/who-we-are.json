@@ -1,0 +1,26 @@
+{
+  "pageBand": {
+    "title": "Who we are",
+    "standfirst": "A rare blend of public health, early years and creative engagement expertise, underpinned by two decades of senior leadership."
+  },
+  "intro": {
+    "heading": "Childhood is precious, and it matters right now",
+    "paragraphs": [
+      "Founded by Louise Harrington and Lucy Williams, Childhood is Now was born out of a shared belief that childhood is precious and matters greatly — not just for the future it promises, but for the lives young children are living right now.",
+      "We bring together a unique combination of public health, early years and creative engagement expertise, underpinned by significant senior leadership experience. For the last two decades, we have worked across the early years system including within national charities, local government and the NHS.",
+      "Time and time again, we have seen the same pattern: strong evidence, committed practitioners and clear policy intent, but systems struggling to join up, listen deeply to families, or turn ambition into lasting change. Childhood is Now bridges this gap."
+    ]
+  },
+  "founders": {
+    "heading": "Meet the founders",
+    "standfirst": "Two founders, working hands-on with every client."
+  },
+  "valuesSection": {
+    "heading": "What we stand for"
+  },
+  "cta": {
+    "heading": "Want to work with us?",
+    "paragraph": "We're happy to have an exploratory conversation before anything formal.",
+    "buttonLabel": "Get in touch"
+  }
+}

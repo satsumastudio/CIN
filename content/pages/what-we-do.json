@@ -1,0 +1,42 @@
+{
+  "pageBand": {
+    "title": "What we do",
+    "standfirst": "Hands-on senior support to join up the early years system."
+  },
+  "intro": {
+    "heading": "We help systems turn ambition into practice",
+    "paragraph": "We help local authorities, NHS and the Voluntary and Community Sector to co-create and strengthen early years systems. We work in partnership, combining evidence, creativity, and authentic collaboration to reduce inequalities and deliver lasting impact for babies and young children."
+  },
+  "quote": "We hold a deep respect for lived experience, recognising that the best solutions are built from within communities.",
+  "supportAreas": {
+    "heading": "We can support you to",
+    "standfirst": "Five things we are most often asked to help with.",
+    "items": [
+      "Design and improve early years strategies, services and systems that are equity-focused, evidence-informed and rooted in lived experience.",
+      "Bring partners together across sectors to work collaboratively around a shared vision and outcomes for babies, children and families.",
+      "Embed co-design and participation, ensuring families and communities shape the decisions that affect them.",
+      "Translate evidence into action, combining research, local insights, data and learning with practical, real-world delivery.",
+      "Build confidence and capability within teams and partnerships to sustain change beyond individual projects."
+    ]
+  },
+  "bespokeSupport": {
+    "heading": "Bespoke support can include",
+    "items": [
+      "Early Years system review and support to embed recommended actions",
+      "Translating national policy into local strategy and delivery",
+      "Critical friend / or co-development of Best Start in Life (BSIL) operational plans",
+      "Critical friend / or co-development of BSIL Healthy Babies' integrated pathways and public health whole system approaches",
+      "Co-development of Test, Learn and Grow approaches",
+      "Co-design of locally tailored evidence-informed programmes and adaptation of Evidence-Based Interventions (EBI)",
+      "Develop and facilitate co-design workshops with a range of partners including parents and carers",
+      "Training and support to develop local capacity and expertise in gathering authentic insights through community peer research and participatory approaches",
+      "Develop quality improvement systems and processes to improve practice and outcomes using data and evidence",
+      "Workshops and training to develop local capacity and expertise in narrowing the attainment gap, including parental engagement in children's learning and the Home Learning Environment (HLE), nurturing young children's creativity and families' access to the Arts, and listening to babies and young children"
+    ]
+  },
+  "cta": {
+    "heading": "Tell us what you're working to solve",
+    "paragraph": "We'll be straight with you about where we can add most value.",
+    "buttonLabel": "Get in touch"
+  }
+}

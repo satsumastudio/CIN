@@ -1,0 +1,72 @@
+{
+  "hero": {
+    "heading": "Childhood is Now because children's futures",
+    "highlight": "can't wait.",
+    "paragraph": "We work with local authorities, the NHS and the Voluntary and Community Sector to co-create fairer, healthier early years systems — built on evidence, creativity and authentic collaboration.",
+    "primaryButtonLabel": "Work with us",
+    "secondaryButtonLabel": "What we do",
+    "image": "/images/photography/photo-2.jpeg",
+    "imageAlt": "Two young children sitting together in a field with arms around each other"
+  },
+  "stats": [
+    {
+      "figure": "20+",
+      "label": "Years of individual senior experience"
+    },
+    {
+      "figure": "NHS · LA · VCS",
+      "label": "Trusted across the system"
+    },
+    {
+      "figure": "Evidence-led",
+      "label": "Rooted in lived experience"
+    }
+  ],
+  "mission": {
+    "heading": "Every baby and child deserves the best childhood",
+    "paragraphs": [
+      "At Childhood is Now, we believe that every child deserves the best start in life, and that means listening deeply, acting early and building creative solutions together that last.",
+      "We know that the everyday decisions made by local systems shape all children's earliest experiences — but the consequences of those decisions are felt most greatly by children growing up in underserved communities or challenging circumstances."
+    ],
+    "image": "/images/photography/mother-and-baby.jpg",
+    "imageAlt": "A mother smiling down at her baby, carried close in a sling"
+  },
+  "missionQuote": {
+    "quote": "Our mission is to work in partnership and combine evidence, creativity, and authentic collaboration to reduce inequalities and to deliver lasting impact for young children.",
+    "attribution": "Louise Harrington & Lucy Williams — Co-Founders"
+  },
+  "help": {
+    "heading": "How we can help",
+    "linkLabel": "See everything we do →",
+    "items": [
+      {
+        "title": "Early years system review",
+        "body": "A clear-eyed look at how your local system works today, and support to embed the actions that follow."
+      },
+      {
+        "title": "Best Start in Life plans",
+        "body": "Critical friend or co-development on BSIL operational plans and Healthy Babies integrated pathways."
+      },
+      {
+        "title": "Co-design and participation",
+        "body": "Workshops and training that put families, practitioners and young children's voices into local decisions."
+      },
+      {
+        "title": "Evidence into action",
+        "body": "Turning research, local insight and data into quality improvement systems that measurably shift outcomes."
+      }
+    ]
+  },
+  "newsSection": {
+    "heading": "From the news",
+    "linkLabel": "See all news →"
+  },
+  "valuesSection": {
+    "heading": "What we stand for"
+  },
+  "cta": {
+    "heading": "Let's build change that lasts",
+    "paragraph": "Whether you're from a local authority, the NHS, or a voluntary sector partner, we'd love to hear from you.",
+    "buttonLabel": "Get in touch"
+  }
+}
