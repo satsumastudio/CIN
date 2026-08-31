@@ -1,0 +1,72 @@
+{
+  "hero": {
+    "heading": "Childhood is Now because children's futures",
+    "highlight": "can't wait.",
+    "paragraph": "We work with local authorities, the NHS and the Voluntary Community, Faith and Social Enterprise (VCFSE) sector to co-create fairer, healthier early years systems — built on evidence, creativity and authentic collaboration.",
+    "primaryButtonLabel": "Work with us",
+    "secondaryButtonLabel": "What we do",
+    "image": "/images/photography/photo-2.jpeg",
+    "imageAlt": "Two young children sitting together in a field with arms around each other"
+  },
+  "stats": [
+    {
+      "figure": "20+",
+      "label": "Years of individual senior experience"
+    },
+    {
+      "figure": "LA · NHS · VCFSE",
+      "label": "Trusted across the system"
+    },
+    {
+      "figure": "Evidence-led",
+      "label": "Rooted in lived experience"
+    }
+  ],
+  "mission": {
+    "heading": "Every baby and child deserves the best childhood",
+    "paragraphs": [
+      "At Childhood is Now, we believe that every child deserves the best start in life, and that means listening deeply, acting early and building creative solutions together that last.",
+      "We know that the everyday decisions made by local systems shape all children's earliest experiences, but the consequences of those decisions are felt most greatly by children growing up in underserved communities or challenging circumstances."
+    ],
+    "image": "/images/photography/mother-and-baby.jpg",
+    "imageAlt": "A mother smiling down at her baby, carried close in a sling"
+  },
+  "missionQuote": {
+    "quote": "Our mission is to work in partnership and combine evidence, creativity, and authentic collaboration to reduce inequalities and to deliver lasting impact for young children.",
+    "attribution": "Louise Harrington & Lucy Williams — Co-Founders"
+  },
+  "help": {
+    "heading": "How we can help",
+    "linkLabel": "See everything we do →",
+    "items": [
+      {
+        "title": "Early years system review",
+        "body": "Critical friend reviews and practical expertise to develop Test, Learn and Grow approaches to improve outcomes, particularly for those at greatest risk of falling behind."
+      },
+      {
+        "title": "Best Start in Life plans",
+        "body": "Leadership and expertise to embed an authentic coproduction approach across the Early Years system, moving beyond parental consultation and parent/carer panels."
+      },
+      {
+        "title": "Co-design and participation",
+        "body": "Strategic expertise to develop and embed an integrated healthy babies offer, with or without the funding."
+      },
+      {
+        "title": "Evidence into action",
+        "body": "Practical expertise to address system fragmentation through system-wide leadership, governance and collaborative working, enabling a shared vision and improved outcomes."
+      }
+    ]
+  },
+  "newsSection": {
+    "heading": "From the news",
+    "linkLabel": "See all news →"
+  },
+  "valuesSection": {
+    "heading": "What we stand for"
+  },
+  "cta": {
+    "heading": "Let's build change that lasts",
+    "paragraph": "Whether you're from a local authority, the NHS, or a voluntary sector partner, we'd love to hear from you.",
+    "buttonLabel": "Get in touch"
+  }
+}
