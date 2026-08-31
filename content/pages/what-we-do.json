@@ -1,0 +1,64 @@
+{
+  "pageBand": {
+    "title": "What we do",
+    "standfirst": "Hands-on senior support to join up the early years system."
+  },
+  "intro": {
+    "heading": "We help systems turn ambition into practice",
+    "paragraph": "We help local authorities, NHS and the Voluntary Community, Faith and Social Enterprise (VCFSE) sector to co-create and strengthen early years systems. We work in partnership, combining evidence, creativity, and authentic collaboration to reduce inequalities and deliver lasting impact for babies and young children."
+  },
+  "quote": "We hold a deep respect for lived experience, recognising that the best solutions are built from within communities.",
+  "capabilities": {
+    "heading": "How we help",
+    "standfirst": "Four areas where we work alongside your system.",
+    "items": [
+      {
+        "title": "Strengthening the System",
+        "description": "Insight, challenge and strategic expertise to strengthen the Early Years system, improve outcomes and reduce inequalities.",
+        "bullets": [
+          "Review and strengthening Best Start in Life plans and strategies, turning ambition into clear priorities, action and measurable outcomes.",
+          "Building shared ownership and accountability for the Best Start in Life vision and outcomes across the system.",
+          "Strengthening leadership, governance and collaboration to join up services and address fragmentation.",
+          "Developing and embedding Test, Learn and Grow approaches to enable local systems to innovate, learn and improve.",
+          "Connecting Best Start in Life, Healthy Child and other key pathways to create a more joined-up whole-system approach."
+        ]
+      },
+      {
+        "title": "Families at the heart of change",
+        "description": "Building the confidence, capability and conditions for meaningful coproduction with parents, carers and communities.",
+        "bullets": [
+          "Embedding coproduction in Early Years governance and decision-making so families have a meaningful influence on priorities, services and change.",
+          "Building shared understanding and capability in codesign and coproduction across the local system.",
+          "Strengthening approaches to parent and carer engagement, getting the fundamentals right and understanding when different approaches are needed.",
+          "Moving beyond consultation and panels towards sustained, meaningful participation that influences practice, services and outcomes.",
+          "Creating the conditions for coproduction to become everyday practice, rather than a standalone activity."
+        ]
+      },
+      {
+        "title": "Listening to babies and young children",
+        "description": "Building workforce confidence and skills to listen to babies and young children to improve their experiences, services and places.",
+        "bullets": [
+          "Listening to babies and young children using the learning from the Mosaic approach to strengthen practice, improve their experiences and inform decision-making.",
+          "Building workforce confidence in creative practice that enables young children to express themselves and participate.",
+          "Expanding access to the Arts and cultural opportunities to support participation, wellbeing and reduce inequalities.",
+          "Planning for Play collaborations to increase children's access to play and green spaces and improve young children's health and wellbeing."
+        ]
+      },
+      {
+        "title": "Understand. Act. Learn. Improve",
+        "description": "Using Childhood is Now's tried and tested systematic approach to reviewing, developing and measuring outcomes.",
+        "bullets": [
+          "Bringing together evidence, local data and lived and learnt experience to understand what matters most and will make the greatest difference for babies, young children and families.",
+          "Using evidence and insights to understand local need and inequalities and develop clear priorities for action.",
+          "Measuring what works to achieve the best outcomes for children and reflect on what is changing and why, for whom and where further action is needed.",
+          "Using learning to drive positive change and strengthen approaches that improve outcomes and reduce inequalities."
+        ]
+      }
+    ]
+  },
+  "cta": {
+    "heading": "Tell us what you're working to solve",
+    "paragraph": "We'll be straight with you about where we can add most value.",
+    "buttonLabel": "Get in touch"
+  }
+}
