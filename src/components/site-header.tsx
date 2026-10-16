@@ -35,10 +35,11 @@ export function SiteHeader() {
             <Image
               src="/images/logos/logo-blue.png"
               alt="Childhood is Now"
-              width={160}
-              height={48}
+              width={87}
+              height={40}
               className="h-9 w-auto sm:h-10"
-              priority
+              preload
+              fetchPriority="high"
             />
           </Link>
 
@@ -106,8 +107,8 @@ export function SiteHeader() {
             <Image
               src="/images/logos/logo-white.png"
               alt="Childhood is Now"
-              width={140}
-              height={42}
+              width={78}
+              height={36}
               className="h-9 w-auto"
             />
             <button

@@ -3,11 +3,14 @@ import { Band, PageBand } from "@/components/page-band";
 import { SectionCurve } from "@/components/section-curve";
 import { NewsList } from "@/components/tina/news-list";
 import { getNewsListProps } from "@/lib/tina-data";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "News",
-  description: "Updates, insight and announcements from Childhood is Now.",
-};
+  description:
+    "Updates, insight and announcements from Childhood is Now.",
+  path: "/news",
+});
 
 export default async function NewsPage() {
   const newsProps = await getNewsListProps();

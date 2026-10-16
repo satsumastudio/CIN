@@ -45,6 +45,7 @@ export function TeamMemberContent({
                 tilt={tilt}
                 reveal="subtle"
                 sizes="(min-width: 1024px) 20rem, 12rem"
+                priority
                 data-tina-field={tinaField(member, "photo")}
               />
             )}

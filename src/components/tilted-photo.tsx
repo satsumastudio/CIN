@@ -59,7 +59,8 @@ export function TiltedPhoto({
           alt={alt}
           fill
           sizes={sizes}
-          priority={priority}
+          preload={priority}
+          fetchPriority={priority ? "high" : undefined}
           className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
         />
       </div>

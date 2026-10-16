@@ -9,6 +9,9 @@ const nextConfig: NextConfig = {
   // marketing site being actively reviewed, over shaving a network round trip.
   experimental: {
     staleTimes: { static: 30, dynamic: 0 },
+    // The whole stylesheet is ~8 KB gzipped, so shipping it inside the HTML
+    // costs less than the extra render-blocking request it replaces.
+    inlineCss: true,
   },
   // The Tina admin is a static file at public/admin/index.html — without
   // this, visiting the bare /admin (no trailing file) 404s, which is the
@@ -20,6 +23,8 @@ const nextConfig: NextConfig = {
     ];
   },
   images: {
+    // AVIF first: roughly a fifth smaller than WebP for photography.
+    formats: ["image/avif", "image/webp"],
     remotePatterns: [
       // TinaCloud mirrors media referenced in content into its own CDN, so
       // image fields resolved through the cloud content API return

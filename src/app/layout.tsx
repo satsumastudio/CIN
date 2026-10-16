@@ -1,6 +1,15 @@
 import type { Metadata, Viewport } from "next";
 import { Archivo, Inter } from "next/font/google";
 import "./globals.css";
+import {
+  JsonLd,
+  defaultDescription,
+  defaultTitle,
+  organizationJsonLd,
+  pageMetadata,
+  siteName,
+  siteUrl,
+} from "@/lib/seo";
 
 // V2 display face. Archivo is a sturdy grotesque with a width axis, so
 // headings can be set heavy and slightly condensed — the chunky, high-impact
@@ -19,55 +28,23 @@ const inter = Inter({
   weight: ["300", "400", "500", "600"],
 });
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://childhoodisnow.co.uk";
-
-const description =
-  "Childhood is Now works with local authorities, the NHS and the Voluntary and Community Sector to co-create fairer, healthier early years systems — built on evidence, creativity and authentic collaboration.";
+const homeCard = pageMetadata({ description: defaultDescription, path: "/" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Childhood is Now — because children's futures can't wait",
+    default: defaultTitle,
     template: "%s | Childhood is Now",
   },
-  description,
-  keywords: [
-    "early years",
-    "public health",
-    "local authority",
-    "NHS",
-    "Best Start in Life",
-    "co-production",
-    "children's services",
-    "early years consultancy",
-  ],
-  authors: [{ name: "Childhood is Now Ltd" }],
-  openGraph: {
-    type: "website",
-    locale: "en_GB",
-    url: siteUrl,
-    siteName: "Childhood is Now",
-    title: "Childhood is Now — because children's futures can't wait",
-    description,
-    // A dedicated 1200x630 crop of the homepage hero: link previews crop to
-    // roughly 1.91:1, and a platform's own centre crop of the 3:2 original
-    // runs the woman's hair into the top edge.
-    images: [
-      {
-        url: "/images/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "A woman crouches on sunlit grass in a park, steadying a toddler in a yellow checked shirt",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Childhood is Now — because children's futures can't wait",
-    description,
-    images: ["/images/og-image.jpg"],
-  },
+  description: defaultDescription,
+  applicationName: siteName,
+  authors: [{ name: "Childhood is Now Ltd", url: siteUrl }],
+  creator: "Childhood is Now Ltd",
+  publisher: "Childhood is Now Ltd",
+  formatDetection: { telephone: false, email: false, address: false },
+  // The homepage card; inner pages replace it via pageMetadata().
+  openGraph: homeCard.openGraph,
+  twitter: homeCard.twitter,
   robots: {
     index: true,
     follow: true,
@@ -95,6 +72,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Skip to content
         </a>
         {children}
+        <JsonLd data={organizationJsonLd} />
       </body>
     </html>
   );

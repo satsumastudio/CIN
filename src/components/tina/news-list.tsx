@@ -21,7 +21,7 @@ export function NewsList({
 
   return (
     <ul className="grid gap-6 sm:grid-cols-2">
-      {posts.map((post) => (
+      {posts.map((post, i) => (
         <li key={post.id}>
           <NewsCard
             post={post}
@@ -29,6 +29,8 @@ export function NewsList({
             titleAs="h2"
             large
             showExcerpt
+            // The first row is the page's main image, above the fold.
+            priority={i < 2}
           />
         </li>
       ))}

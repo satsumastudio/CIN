@@ -26,8 +26,8 @@ export function SiteFooterClient({
           <Image
             src="/images/logos/logo-white-hands.png"
             alt="Childhood is Now"
-            width={180}
-            height={54}
+            width={104}
+            height={48}
             className="mb-4 h-12 w-auto"
           />
           <p className="max-w-xs text-sm text-white/85" data-tina-field={tinaField(settings, "footerBlurb")}>

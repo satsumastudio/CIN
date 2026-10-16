@@ -62,7 +62,8 @@ export function NewsPostContent({
               fill
               sizes="(min-width: 768px) 48rem, 100vw"
               className="object-cover"
-              priority
+              preload
+              fetchPriority="high"
             />
           </div>
         )}

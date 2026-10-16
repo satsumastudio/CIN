@@ -23,12 +23,15 @@ export function NewsCard({
   titleAs: Title = "p",
   large = false,
   showExcerpt = false,
+  priority = false,
 }: {
   post: CardPost;
   sizes: string;
   titleAs?: "p" | "h2" | "h3";
   large?: boolean;
   showExcerpt?: boolean;
+  /** Load eagerly at high priority — for a card that's above the fold. */
+  priority?: boolean;
 }) {
   const live = !post.comingSoon;
 
@@ -41,6 +44,8 @@ export function NewsCard({
             alt={post.coverAlt ?? ""}
             fill
             sizes={sizes}
+            preload={priority}
+            fetchPriority={priority ? "high" : undefined}
             className={`object-cover ${live ? "transition-transform duration-300 group-hover:scale-[1.04]" : ""}`}
           />
         )}

@@ -85,26 +85,27 @@ export function HomeClient({
 
         {/* Stat strip */}
         <Container>
-          <dl className="grid gap-6 border-t border-brand-blue/15 pt-8 sm:grid-cols-3">
+          <ul className="grid gap-6 border-t border-brand-blue/15 pt-8 sm:grid-cols-3">
             {(content.stats ?? []).map((s, i) => (
-              <div key={i} className="flex items-start gap-3">
+              <li key={i} className="flex items-start gap-3">
                 <span
+                  aria-hidden
                   className={`mt-2 h-3 w-3 shrink-0 rounded-full ${statDots[i % statDots.length]}`}
                 />
                 <div>
-                  <dt
+                  <p
                     className="text-2xl font-extrabold text-brand-blue"
                     data-tina-field={tinaField(s, "figure")}
                   >
                     {s?.figure}
-                  </dt>
-                  <dd className="text-sm text-brand-blue/70" data-tina-field={tinaField(s, "label")}>
+                  </p>
+                  <p className="text-sm text-brand-blue/70" data-tina-field={tinaField(s, "label")}>
                     {s?.label}
-                  </dd>
+                  </p>
                 </div>
-              </div>
+              </li>
             ))}
-          </dl>
+          </ul>
         </Container>
       </section>
 
