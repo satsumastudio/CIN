@@ -5,7 +5,9 @@
   },
   "intro": {
     "heading": "We help systems turn ambition into practice",
-    "paragraph": "We help local authorities, NHS and the Voluntary Community, Faith and Social Enterprise (VCFSE) sector to co-create and strengthen early years systems. We work in partnership, combining evidence, creativity, and authentic collaboration to reduce inequalities and deliver lasting impact for babies and young children."
+    "paragraph": "We help local authorities, NHS and the Voluntary Community, Faith and Social Enterprise (VCFSE) sector to co-create and strengthen early years systems. We work in partnership, combining evidence, creativity, and authentic collaboration to reduce inequalities and deliver lasting impact for babies and young children.",
+    "image": "/images/photography/photo-1.jpg",
+    "imageAlt": "A young boy wearing glasses concentrates while building a tower out of toy blocks"
   },
   "quote": "We hold a deep respect for lived experience, recognising that the best solutions are built from within communities.",
   "capabilities": {
@@ -60,5 +62,8 @@
     "heading": "Tell us what you're working to solve",
     "paragraph": "We'll be straight with you about where we can add most value.",
     "buttonLabel": "Get in touch"
+  },
+  "seo": {
+    "description": "Hands-on senior support to design and improve early years strategies, bring partners together across sectors, embed co-design and participation, and translate evidence into real-world delivery."
   }
 }

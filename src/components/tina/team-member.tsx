@@ -76,7 +76,7 @@ export function TeamMemberContent({
         {lede && (
           <p
             className="mt-12 text-balance text-xl leading-snug text-brand-blue sm:text-2xl"
-            data-tina-field={tinaField(member, "fullBio")}
+            data-tina-field={tinaField(member, "fullBio", 0)}
           >
             {lede}
           </p>
@@ -86,7 +86,9 @@ export function TeamMemberContent({
           <Card className="mt-8 p-6 sm:p-8">
             <div className="space-y-5 text-brand-blue/80 leading-relaxed">
               {rest.map((paragraph, i) => (
-                <p key={i}>{paragraph}</p>
+                <p key={i} data-tina-field={tinaField(member, "fullBio", i + 1)}>
+                  {paragraph}
+                </p>
               ))}
             </div>
           </Card>

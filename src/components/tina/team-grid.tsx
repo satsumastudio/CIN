@@ -10,10 +10,15 @@ export function TeamGrid({
   data: initialData,
   query,
   variables,
+  buttonLabel,
+  buttonField,
 }: {
   data: TeamConnectionQuery;
   query: string;
   variables: TeamConnectionQueryVariables;
+  buttonLabel?: string | null;
+  /** Click-to-edit target for the button label in the Tina preview. */
+  buttonField?: string;
 }) {
   const { data } = useTina({ query, variables, data: initialData });
   const team = (data.teamConnection.edges ?? []).flatMap((edge) =>
@@ -64,7 +69,7 @@ export function TeamGrid({
               variant="primary"
               className="mt-2 self-start"
             >
-              Read full biography
+              <span data-tina-field={buttonField}>{buttonLabel || "Read full biography"}</span>
             </Button>
           </div>
         </Card>

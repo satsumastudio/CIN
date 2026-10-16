@@ -36,7 +36,7 @@ function linkify(text: string) {
 export function LegalContent({ content, rule }: { content: LegalContentData; rule: string }) {
   return (
     <>
-      <PageBand title={content.title ?? ""} rule={rule} />
+      <PageBand title={content.title ?? ""} rule={rule} titleField={tinaField(content, "title")} />
       <Band tone="white">
         <div className="max-w-2xl">
           {content.intro && (

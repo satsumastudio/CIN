@@ -61,10 +61,10 @@ export function HomeClient({
 
             <div className="mt-9 flex flex-wrap gap-3">
               <Button href="/get-in-touch" variant="primary">
-                {content.hero?.primaryButtonLabel}
+                <span data-tina-field={tinaField(content.hero, "primaryButtonLabel")}>{content.hero?.primaryButtonLabel}</span>
               </Button>
               <Button href="/what-we-do" variant="outline">
-                {content.hero?.secondaryButtonLabel}
+                <span data-tina-field={tinaField(content.hero, "secondaryButtonLabel")}>{content.hero?.secondaryButtonLabel}</span>
               </Button>
             </div>
           </div>
@@ -249,7 +249,7 @@ export function HomeClient({
             </p>
           </div>
           <Button href="/get-in-touch" variant="primary" className="shrink-0">
-            {content.cta?.buttonLabel}
+            <span data-tina-field={tinaField(content.cta, "buttonLabel")}>{content.cta?.buttonLabel}</span>
           </Button>
         </Container>
       </section>

@@ -29,6 +29,8 @@ export function WhatWeDoClient({
       <PageBand
         title={content.pageBand?.title ?? ""}
         standfirst={content.pageBand?.standfirst ?? ""}
+        titleField={tinaField(content.pageBand, "title")}
+        standfirstField={tinaField(content.pageBand, "standfirst")}
         rule="bg-red-50t"
       />
 
@@ -43,12 +45,15 @@ export function WhatWeDoClient({
             </p>
           </div>
           <div className="px-2 sm:px-6 lg:px-0">
-            <TiltedPhoto
-              src="/images/photography/photo-1.jpg"
-              alt="A young boy wearing glasses concentrates while building a tower out of toy blocks"
-              block="yellow"
-              tilt="left"
-            />
+            {content.intro?.image && (
+              <TiltedPhoto
+                src={content.intro.image}
+                alt={content.intro.imageAlt ?? ""}
+                block="yellow"
+                tilt="left"
+                data-tina-field={tinaField(content.intro, "image")}
+              />
+            )}
           </div>
         </div>
       </Band>
@@ -66,7 +71,11 @@ export function WhatWeDoClient({
       <Band tone="white" curveFrom="green" curveVariant={1}>
         <SectionHeading
           tone={0}
-          standfirst={content.capabilities?.standfirst}
+          standfirst={
+            <span data-tina-field={tinaField(content.capabilities, "standfirst")}>
+              {content.capabilities?.standfirst}
+            </span>
+          }
           data-tina-field={tinaField(content.capabilities, "heading")}
         >
           {content.capabilities?.heading}
@@ -117,7 +126,7 @@ export function WhatWeDoClient({
             </p>
           </div>
           <Button href="/get-in-touch" variant="primary" className="shrink-0">
-            {content.cta?.buttonLabel}
+            <span data-tina-field={tinaField(content.cta, "buttonLabel")}>{content.cta?.buttonLabel}</span>
           </Button>
         </Container>
       </section>

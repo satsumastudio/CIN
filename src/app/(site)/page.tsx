@@ -4,10 +4,13 @@ import type { Metadata } from "next";
 import { HomeClient } from "./home-client";
 import { defaultDescription, pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = pageMetadata({
-  description: defaultDescription,
-  path: "/",
-});
+export async function generateMetadata(): Promise<Metadata> {
+  const { data } = await client.queries.home({ relativePath: "home.json" });
+  return pageMetadata({
+    description: data.home.seo?.description || defaultDescription,
+    path: "/",
+  });
+}
 
 export default async function Home() {
   const [{ data, query, variables }, valuesProps, newsProps] = await Promise.all([

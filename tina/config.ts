@@ -26,6 +26,35 @@ const paragraphList = (label: string, name = "paragraphs") => ({
   ui: { component: "textarea" as const },
 });
 
+// What Google shows under the page title in search results. Optional:
+// each page falls back to a sensible built-in description when blank.
+const seoField = () => ({
+  type: "object" as const,
+  name: "seo",
+  label: "Search engine listing",
+  fields: [
+    {
+      type: "string" as const,
+      name: "description",
+      label: "Search description",
+      description:
+        "Shown under the page title in Google results and link previews. Aim for 120–155 characters. Leave blank to use the default.",
+      ui: { component: "textarea" as const },
+    },
+  ],
+});
+
+// A section photo plus the description read out by screen readers.
+const imageFields = (label = "Photo") => [
+  { type: "image" as const, name: "image", label },
+  {
+    type: "string" as const,
+    name: "imageAlt",
+    label: `${label} description (alt text)`,
+    description: "Describe what's in the photo for people using screen readers.",
+  },
+];
+
 // Privacy and terms share one shape so they render through the same layout.
 const legalPageFields = () => [
   { type: "string" as const, name: "title", label: "Title" },
@@ -42,6 +71,7 @@ const legalPageFields = () => [
     ],
   },
   { type: "string" as const, name: "lastUpdated", label: "Last updated line" },
+  seoField(),
 ];
 
 export default defineConfig({
@@ -163,6 +193,7 @@ export default defineConfig({
               { type: "string", name: "buttonLabel", label: "Button label" },
             ],
           },
+          seoField(),
         ],
       },
       {
@@ -189,6 +220,7 @@ export default defineConfig({
             fields: [
               { type: "string", name: "heading", label: "Heading" },
               paragraphList("Paragraphs"),
+              ...imageFields(),
             ],
           },
           {
@@ -198,6 +230,7 @@ export default defineConfig({
             fields: [
               { type: "string", name: "heading", label: "Heading" },
               { type: "string", name: "standfirst", label: "Standfirst" },
+              { type: "string", name: "buttonLabel", label: "\"Read full biography\" button label" },
             ],
           },
           {
@@ -216,6 +249,7 @@ export default defineConfig({
               { type: "string", name: "buttonLabel", label: "Button label" },
             ],
           },
+          seoField(),
         ],
       },
       {
@@ -242,6 +276,7 @@ export default defineConfig({
             fields: [
               { type: "string", name: "heading", label: "Heading" },
               { type: "string", name: "paragraph", label: "Paragraph", ui: { component: "textarea" } },
+              ...imageFields(),
             ],
           },
           { type: "string", name: "quote", label: "Pull quote", ui: { component: "textarea" } },
@@ -276,6 +311,7 @@ export default defineConfig({
               { type: "string", name: "buttonLabel", label: "Button label" },
             ],
           },
+          seoField(),
         ],
       },
       {
@@ -302,6 +338,7 @@ export default defineConfig({
             fields: [
               { type: "string", name: "heading", label: "Heading" },
               { type: "string", name: "paragraph", label: "Paragraph", ui: { component: "textarea" } },
+              ...imageFields(),
             ],
           },
           {
@@ -316,6 +353,8 @@ export default defineConfig({
             label: "Advisory group memberships",
             fields: [
               { type: "string", name: "heading", label: "Heading" },
+              { type: "string", name: "currentLabel", label: "\"Current\" subheading" },
+              { type: "string", name: "previousLabel", label: "\"Previous\" subheading" },
               {
                 type: "object",
                 name: "current",
@@ -346,6 +385,7 @@ export default defineConfig({
             label: "Publications",
             fields: [
               { type: "string", name: "heading", label: "Heading" },
+              { type: "string", name: "linkLabel", label: "\"View source\" link label" },
               {
                 type: "object",
                 name: "items",
@@ -370,6 +410,7 @@ export default defineConfig({
               { type: "string", name: "buttonLabel", label: "Button label" },
             ],
           },
+          seoField(),
         ],
       },
       {
@@ -397,6 +438,16 @@ export default defineConfig({
               { type: "string", name: "heading", label: "Heading" },
               { type: "string", name: "intro", label: "Intro", ui: { component: "textarea" } },
               { type: "string", name: "cardHeading", label: "\"Send us a message\" card heading" },
+              { type: "string", name: "firstNameLabel", label: "First name label" },
+              { type: "string", name: "lastNameLabel", label: "Last name label" },
+              { type: "string", name: "emailLabel", label: "Email label" },
+              { type: "string", name: "phoneLabel", label: "Phone label" },
+              { type: "string", name: "optionalLabel", label: "\"(optional)\" hint" },
+              { type: "string", name: "messageLabel", label: "Message label" },
+              { type: "string", name: "mailingListLabel", label: "Mailing list checkbox text", ui: { component: "textarea" } },
+              { type: "string", name: "submitLabel", label: "Submit button label" },
+              { type: "string", name: "successHeading", label: "Thank-you heading" },
+              { type: "string", name: "successMessage", label: "Thank-you message" },
             ],
           },
           {
@@ -416,9 +467,40 @@ export default defineConfig({
             name: "legalNote",
             label: "Legal note",
             description:
-              'Shown just above the page footer, followed automatically by a "privacy notice" link — don\'t include those words here.',
+              "Shown just above the page footer and followed by the privacy notice link below, so end it where the link text should follow.",
             ui: { component: "textarea" },
           },
+          { type: "string", name: "legalNoteLinkLabel", label: "Legal note link text" },
+          seoField(),
+        ],
+      },
+      {
+        name: "newsPage",
+        label: "News Page",
+        path: "content/pages",
+        format: "json",
+        match: { include: "news" },
+        ...singleton("news", "/news"),
+        fields: [
+          {
+            type: "object",
+            name: "pageBand",
+            label: "Page header",
+            fields: [
+              { type: "string", name: "title", label: "Title" },
+              { type: "string", name: "standfirst", label: "Standfirst", ui: { component: "textarea" } },
+            ],
+          },
+          {
+            type: "object",
+            name: "more",
+            label: "\"More from us\" (below each article)",
+            fields: [
+              { type: "string", name: "heading", label: "Heading" },
+              { type: "string", name: "linkLabel", label: "\"All news\" link label" },
+            ],
+          },
+          seoField(),
         ],
       },
       {
@@ -447,11 +529,28 @@ export default defineConfig({
         match: { include: "site-settings" },
         ...singleton("site-settings", "/"),
         fields: [
+          {
+            type: "object",
+            name: "navigation",
+            label: "Menu labels",
+            description: "The page names in the header menu and footer.",
+            fields: [
+              { type: "string", name: "whoWeAre", label: "Who we are" },
+              { type: "string", name: "whatWeDo", label: "What we do" },
+              { type: "string", name: "ourWork", label: "Our work" },
+              { type: "string", name: "news", label: "News" },
+              { type: "string", name: "getInTouch", label: "Get in touch (button)" },
+            ],
+          },
           { type: "string", name: "footerBlurb", label: "Footer blurb", ui: { component: "textarea" } },
+          { type: "string", name: "footerExploreHeading", label: "Footer \"Explore\" heading" },
+          { type: "string", name: "footerContactHeading", label: "Footer \"Get in touch\" heading" },
           { type: "string", name: "footerUncrcNote", label: "Footer UNCRC note", ui: { component: "textarea" } },
           { type: "string", name: "footerThanksNote", label: "Footer thank-you note", ui: { component: "textarea" } },
           { type: "string", name: "contactEmail", label: "Main contact email" },
           { type: "string", name: "companyLine", label: "Company/copyright line" },
+          { type: "string", name: "privacyLinkLabel", label: "Footer privacy link label" },
+          { type: "string", name: "termsLinkLabel", label: "Footer terms link label" },
         ],
       },
       {

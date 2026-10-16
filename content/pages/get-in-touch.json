@@ -6,7 +6,17 @@
   "form": {
     "heading": "Tell us what you're working on",
     "intro": "Complete the form, or email us directly using whichever route fits best.",
-    "cardHeading": "Send us a message"
+    "cardHeading": "Send us a message",
+    "firstNameLabel": "First name",
+    "lastNameLabel": "Last name",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone",
+    "optionalLabel": "(optional)",
+    "messageLabel": "Message",
+    "mailingListLabel": "I'd like to join the Childhood is Now mailing list to receive news updates",
+    "submitLabel": "Submit",
+    "successHeading": "Thank you — your message has been sent.",
+    "successMessage": "We'll be in touch as soon as we can."
   },
   "contactRoutes": [
     {
@@ -15,5 +25,9 @@
       "email": "info@childhoodisnow.co.uk"
     }
   ],
-  "legalNote": "We use the information you provide to respond to your enquiry and, if you tick the box, to send you news updates. For more detail, see our"
+  "legalNote": "We use the information you provide to respond to your enquiry and, if you tick the box, to send you news updates. For more detail, see our",
+  "legalNoteLinkLabel": "privacy notice",
+  "seo": {
+    "description": "Get in touch with Childhood is Now. Whether you're from a local authority, the NHS, or a voluntary sector partner, we'd love to hear from you."
+  }
 }

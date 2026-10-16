@@ -34,6 +34,8 @@ export function WhoWeAreClient({
       <PageBand
         title={content.pageBand?.title ?? ""}
         standfirst={content.pageBand?.standfirst ?? ""}
+        titleField={tinaField(content.pageBand, "title")}
+        standfirstField={tinaField(content.pageBand, "standfirst")}
         rule="bg-green-50t"
       />
 
@@ -50,12 +52,15 @@ export function WhoWeAreClient({
             </div>
           </div>
           <div className="px-2 sm:px-6 lg:px-0">
-            <TiltedPhoto
-              src="/images/photography/together.jpeg"
-              alt="Louise Harrington and Lucy Williams, co-founders of Childhood is Now"
-              block="green"
-              tilt="right"
-            />
+            {content.intro?.image && (
+              <TiltedPhoto
+                src={content.intro.image}
+                alt={content.intro.imageAlt ?? ""}
+                block="green"
+                tilt="right"
+                data-tina-field={tinaField(content.intro, "image")}
+              />
+            )}
           </div>
         </div>
       </Band>
@@ -63,13 +68,21 @@ export function WhoWeAreClient({
       <Band tone="soft" curveFrom="white" curveVariant={0}>
         <SectionHeading
           tone={1}
-          standfirst={content.founders?.standfirst}
+          standfirst={
+            <span data-tina-field={tinaField(content.founders, "standfirst")}>
+              {content.founders?.standfirst}
+            </span>
+          }
           data-tina-field={tinaField(content.founders, "heading")}
         >
           {content.founders?.heading}
         </SectionHeading>
 
-        <TeamGrid {...teamProps} />
+        <TeamGrid
+          {...teamProps}
+          buttonLabel={content.founders?.buttonLabel}
+          buttonField={tinaField(content.founders, "buttonLabel")}
+        />
       </Band>
 
       <Band tone="white" curveFrom="soft" curveVariant={1} className="overflow-hidden">
@@ -92,7 +105,7 @@ export function WhoWeAreClient({
             </p>
           </div>
           <Button href="/get-in-touch" variant="primary" className="shrink-0">
-            {content.cta?.buttonLabel}
+            <span data-tina-field={tinaField(content.cta, "buttonLabel")}>{content.cta?.buttonLabel}</span>
           </Button>
         </Container>
       </section>

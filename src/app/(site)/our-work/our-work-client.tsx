@@ -26,6 +26,8 @@ export function OurWorkClient({
       <PageBand
         title={content.pageBand?.title ?? ""}
         standfirst={content.pageBand?.standfirst ?? ""}
+        titleField={tinaField(content.pageBand, "title")}
+        standfirstField={tinaField(content.pageBand, "standfirst")}
         rule="bg-yellow-50t"
       />
 
@@ -40,12 +42,15 @@ export function OurWorkClient({
             </p>
           </div>
           <div className="px-2 sm:px-6 lg:px-0">
-            <TiltedPhoto
-              src="/images/photography/photo-4.jpeg"
-              alt="A toddler's hand pushes a wooden toy train along a track on a wooden floor"
-              block="red"
-              tilt="right"
-            />
+            {content.intro?.image && (
+              <TiltedPhoto
+                src={content.intro.image}
+                alt={content.intro.imageAlt ?? ""}
+                block="red"
+                tilt="right"
+                data-tina-field={tinaField(content.intro, "image")}
+              />
+            )}
           </div>
         </div>
 
@@ -70,8 +75,11 @@ export function OurWorkClient({
           {content.advisory?.heading}
         </SectionHeading>
 
-        <h3 className="mt-10 text-xs font-bold uppercase tracking-wide text-brand-blue/70">
-          Current
+        <h3
+          className="mt-10 text-xs font-bold uppercase tracking-wide text-brand-blue/70"
+          data-tina-field={tinaField(content.advisory, "currentLabel")}
+        >
+          {content.advisory?.currentLabel}
         </h3>
         <ul className="mt-5 grid gap-4 lg:grid-cols-3">
           {(content.advisory?.current ?? []).map((item, i) => (
@@ -88,8 +96,11 @@ export function OurWorkClient({
           ))}
         </ul>
 
-        <h3 className="mt-12 text-xs font-bold uppercase tracking-wide text-brand-blue/70">
-          Previous
+        <h3
+          className="mt-12 text-xs font-bold uppercase tracking-wide text-brand-blue/70"
+          data-tina-field={tinaField(content.advisory, "previousLabel")}
+        >
+          {content.advisory?.previousLabel}
         </h3>
         <ul className="mt-5 grid gap-4 sm:grid-cols-2">
           {(content.advisory?.previous ?? []).map((item, i) => (
@@ -122,8 +133,9 @@ export function OurWorkClient({
                   target="_blank"
                   rel="noopener noreferrer"
                   className="link-arrow focus-ring mt-2 min-h-11 items-center text-sm font-bold text-brand-blue underline underline-offset-4 transition-colors hover:text-blue-50t"
+                  data-tina-field={tinaField(content.publicationsSection, "linkLabel")}
                 >
-                  View source →
+                  {content.publicationsSection?.linkLabel}
                 </a>
               )}
             </li>
@@ -144,7 +156,7 @@ export function OurWorkClient({
             </p>
           </div>
           <Button href="/get-in-touch" variant="primary" className="shrink-0">
-            {content.cta?.buttonLabel}
+            <span data-tina-field={tinaField(content.cta, "buttonLabel")}>{content.cta?.buttonLabel}</span>
           </Button>
         </Container>
       </section>

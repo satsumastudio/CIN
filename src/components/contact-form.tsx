@@ -1,10 +1,18 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { tinaField } from "tinacms/dist/react";
+import type { GetInTouchPageQuery } from "../../tina/__generated__/types";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
-export function ContactForm() {
+type FormCopy = GetInTouchPageQuery["getInTouchPage"]["form"];
+
+// Labels and messages are edited in Tina (Get In Touch Page → Form section).
+// Error messages stay in code: they come from the server's validation.
+export function ContactForm({ copy }: { copy: FormCopy }) {
+  const field = (name: Exclude<keyof NonNullable<FormCopy>, "__typename">) =>
+    copy ? tinaField(copy, name) : undefined;
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string | null>(null);
 
@@ -48,10 +56,10 @@ export function ContactForm() {
     return (
       <div className="rounded-2xl bg-green-10t p-8 text-center">
         <p className="text-lg font-semibold text-brand-blue">
-          Thank you — your message has been sent.
+          <span data-tina-field={field("successHeading")}>{copy?.successHeading}</span>
         </p>
         <p className="text-sm text-brand-blue/80 mt-2">
-          We&apos;ll be in touch as soon as we can.
+          <span data-tina-field={field("successMessage")}>{copy?.successMessage}</span>
         </p>
       </div>
     );
@@ -62,7 +70,7 @@ export function ContactForm() {
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="firstName" className="block text-sm font-medium text-brand-blue mb-1.5">
-            First name
+            <span data-tina-field={field("firstNameLabel")}>{copy?.firstNameLabel}</span>
           </label>
           <input
             id="firstName"
@@ -75,7 +83,7 @@ export function ContactForm() {
         </div>
         <div>
           <label htmlFor="lastName" className="block text-sm font-medium text-brand-blue mb-1.5">
-            Last name
+            <span data-tina-field={field("lastNameLabel")}>{copy?.lastNameLabel}</span>
           </label>
           <input
             id="lastName"
@@ -90,7 +98,7 @@ export function ContactForm() {
 
       <div>
         <label htmlFor="email" className="block text-sm font-medium text-brand-blue mb-1.5">
-          Email
+          <span data-tina-field={field("emailLabel")}>{copy?.emailLabel}</span>
         </label>
         <input
           id="email"
@@ -105,7 +113,10 @@ export function ContactForm() {
 
       <div>
         <label htmlFor="phone" className="block text-sm font-medium text-brand-blue mb-1.5">
-          Phone <span className="text-brand-blue/75">(optional)</span>
+          <span data-tina-field={field("phoneLabel")}>{copy?.phoneLabel}</span>{" "}
+          <span className="text-brand-blue/75" data-tina-field={field("optionalLabel")}>
+            {copy?.optionalLabel}
+          </span>
         </label>
         <input
           id="phone"
@@ -119,7 +130,7 @@ export function ContactForm() {
 
       <div>
         <label htmlFor="message" className="block text-sm font-medium text-brand-blue mb-1.5">
-          Message
+          <span data-tina-field={field("messageLabel")}>{copy?.messageLabel}</span>
         </label>
         <textarea
           id="message"
@@ -137,7 +148,7 @@ export function ContactForm() {
           name="mailingList"
           className="mt-0.5 h-5 w-5 shrink-0 cursor-pointer accent-brand-blue"
         />
-        <span>I&apos;d like to join the Childhood is Now mailing list to receive news updates</span>
+        <span data-tina-field={field("mailingListLabel")}>{copy?.mailingListLabel}</span>
       </label>
 
       {error && <p className="text-sm text-brand-blue">{error}</p>}
@@ -147,7 +158,11 @@ export function ContactForm() {
         disabled={status === "submitting"}
         className="w-full min-h-12 rounded-sm bg-brand-blue py-3.5 text-base font-bold text-white hover:bg-blue-50t disabled:opacity-60 transition-colors"
       >
-        {status === "submitting" ? "Sending…" : "Submit"}
+        {status === "submitting" ? (
+          "Sending…"
+        ) : (
+          <span data-tina-field={field("submitLabel")}>{copy?.submitLabel}</span>
+        )}
       </button>
     </form>
   );

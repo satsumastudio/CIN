@@ -51,7 +51,10 @@ export function NewsCard({
         )}
       </div>
       <div className="flex flex-1 flex-col p-6">
-        <p className="text-xs font-bold uppercase tracking-wide text-brand-blue/70">
+        <p
+          className="text-xs font-bold uppercase tracking-wide text-brand-blue/70"
+          data-tina-field={tinaField(post, "publishedAt")}
+        >
           {formatPostDate(post)}
         </p>
         <Title

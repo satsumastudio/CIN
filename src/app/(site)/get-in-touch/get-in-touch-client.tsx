@@ -27,6 +27,8 @@ export function GetInTouchClient({
       <PageBand
         title={content.pageBand?.title ?? ""}
         standfirst={content.pageBand?.standfirst ?? ""}
+        titleField={tinaField(content.pageBand, "title")}
+        standfirstField={tinaField(content.pageBand, "standfirst")}
         rule="bg-blue-50t"
       />
 
@@ -72,7 +74,7 @@ export function GetInTouchClient({
               {content.form?.cardHeading}
             </h2>
             <div className="mt-6">
-              <ContactForm />
+              <ContactForm copy={content.form} />
             </div>
           </Card>
         </div>
@@ -82,13 +84,14 @@ export function GetInTouchClient({
 
       <section className="bg-yellow-30t text-brand-blue">
         <Container className="py-8 text-sm text-brand-blue/80">
-          <p data-tina-field={tinaField(content, "legalNote")}>
-            {content.legalNote}{" "}
+          <p>
+            <span data-tina-field={tinaField(content, "legalNote")}>{content.legalNote}</span>{" "}
             <a
               href="/privacy"
               className="font-bold underline underline-offset-4 hover:text-blue-50t"
+              data-tina-field={tinaField(content, "legalNoteLinkLabel")}
             >
-              privacy notice
+              {content.legalNoteLinkLabel}
             </a>
             .
           </p>

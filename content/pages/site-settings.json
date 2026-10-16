@@ -1,7 +1,18 @@
 {
+  "navigation": {
+    "whoWeAre": "Who We Are",
+    "whatWeDo": "What We Do",
+    "ourWork": "Our Work",
+    "news": "News",
+    "getInTouch": "Get In Touch"
+  },
   "footerBlurb": "Helping local authorities, the NHS and the Voluntary Community, Faith and Social Enterprise (VCFSE) sector give every baby and young child the best possible start in life.",
   "footerUncrcNote": "Childhood is Now advocates for the United Nations Convention on the Rights of the Child (UNCRC).",
   "footerThanksNote": "A special thank you to Dr Stella Louis, whose work inspired the name Childhood is Now.",
   "contactEmail": "info@childhoodisnow.co.uk",
-  "companyLine": "Childhood is Now Ltd. Registered in England and Wales, company number 16954121. Registered office: 16 Upper Woburn Place, London, WC1H 0AF."
+  "companyLine": "Childhood is Now Ltd. Registered in England and Wales, company number 16954121. Registered office: 16 Upper Woburn Place, London, WC1H 0AF.",
+  "footerExploreHeading": "Explore",
+  "footerContactHeading": "Get in touch",
+  "privacyLinkLabel": "Privacy Notice",
+  "termsLinkLabel": "Terms of Use"
 }

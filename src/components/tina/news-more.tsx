@@ -17,11 +17,16 @@ export function NewsMore({
   query,
   variables,
   currentSlug,
+  heading,
+  linkLabel,
 }: {
   data: PostConnectionQuery;
   query: string;
   variables: PostConnectionQueryVariables;
   currentSlug: string;
+  /** From the News Page document in Tina. */
+  heading?: string | null;
+  linkLabel?: string | null;
 }) {
   const { data } = useTina({ query, variables, data: initialData });
   const posts = sortPosts(
@@ -35,12 +40,12 @@ export function NewsMore({
   return (
     <>
       <div className="flex flex-wrap items-end justify-between gap-4">
-        <h2 className="text-2xl text-brand-blue sm:text-3xl">More from us</h2>
+        <h2 className="text-2xl text-brand-blue sm:text-3xl">{heading || "More from us"}</h2>
         <Link
           href="/news"
           className="link-arrow focus-ring min-h-11 items-center text-sm font-bold text-brand-blue transition-colors hover:text-blue-50t"
         >
-          All news
+          {linkLabel || "All news"}
         </Link>
       </div>
 

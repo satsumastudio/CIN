@@ -60,7 +60,10 @@ export default async function NewsPostPage({
   const { data, query, variables } = await client.queries.post({
     relativePath: `${slug}.json`,
   });
-  const moreProps = await getNewsTeaserProps();
+  const [moreProps, newsPage] = await Promise.all([
+    getNewsTeaserProps(),
+    client.queries.newsPage({ relativePath: "news.json" }),
+  ]);
 
   const post = data.post;
 
@@ -91,7 +94,12 @@ export default async function NewsPostPage({
       )}
       <NewsPostContent data={data} query={query} variables={variables} />
       <Band tone="soft" curveFrom="white" curveVariant={1}>
-        <NewsMore {...moreProps} currentSlug={slug} />
+        <NewsMore
+          {...moreProps}
+          currentSlug={slug}
+          heading={newsPage.data.newsPage.more?.heading}
+          linkLabel={newsPage.data.newsPage.more?.linkLabel}
+        />
       </Band>
       <SectionCurve from="soft" to="navy" variant={0} straight />
     </>

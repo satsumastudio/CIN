@@ -8,20 +8,31 @@ export function PageBand({
   title,
   standfirst,
   rule = "bg-green-50t",
+  titleField,
+  standfirstField,
 }: {
   title: string;
   standfirst?: string;
   rule?: string;
+  /** Click-to-edit targets (tinaField) for the Tina preview. */
+  titleField?: string;
+  standfirstField?: string;
 }) {
   return (
     <div className="border-b border-brand-blue/10">
       <Container className="py-12 sm:py-16">
         <span className={`rule-top mb-5 block ${rule}`} />
-        <h1 className="text-balance text-4xl sm:text-5xl lg:text-6xl text-brand-blue">
+        <h1
+          className="text-balance text-4xl sm:text-5xl lg:text-6xl text-brand-blue"
+          data-tina-field={titleField}
+        >
           {title}
         </h1>
         {standfirst && (
-          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-brand-blue/75">
+          <p
+            className="mt-5 max-w-2xl text-lg leading-relaxed text-brand-blue/75"
+            data-tina-field={standfirstField}
+          >
             {standfirst}
           </p>
         )}

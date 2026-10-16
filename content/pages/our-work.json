@@ -5,7 +5,9 @@
   },
   "intro": {
     "heading": "A track record built over two decades",
-    "paragraph": "From national programme design and RCT-backed evaluation to regional leadership on Best Start in Life, our work spans the full width of the early years system."
+    "paragraph": "From national programme design and RCT-backed evaluation to regional leadership on Best Start in Life, our work spans the full width of the early years system.",
+    "image": "/images/photography/photo-4.jpeg",
+    "imageAlt": "A toddler's hand pushes a wooden toy train along a track on a wooden floor"
   },
   "trackRecord": {
     "items": [
@@ -21,6 +23,8 @@
   },
   "advisory": {
     "heading": "Advisory group memberships",
+    "currentLabel": "Current",
+    "previousLabel": "Previous",
     "current": [
       {
         "title": "Advisory Group member, The Rise Study (NIHR-funded), Bristol University",
@@ -36,17 +40,27 @@
       }
     ],
     "previous": [
-      { "title": "Expert Reference Group member, Parent Infant Foundation", "description": "" },
+      {
+        "title": "Expert Reference Group member, Parent Infant Foundation",
+        "description": ""
+      },
       {
         "title": "Steering Committee Member, ADVANCE Study (NIHR-funded), King's College London",
         "description": "Advancing interventions for men in substance misuse treatment who perpetrate intimate partner violence."
       },
-      { "title": "Advisory Group Member, Early Years Funders Group, Collective Futures", "description": "" },
-      { "title": "Advisory Group Member, Stronger Practice Hubs, NCB", "description": "" }
+      {
+        "title": "Advisory Group Member, Early Years Funders Group, Collective Futures",
+        "description": ""
+      },
+      {
+        "title": "Advisory Group Member, Stronger Practice Hubs, NCB",
+        "description": ""
+      }
     ]
   },
   "publicationsSection": {
     "heading": "Publications",
+    "linkLabel": "View source →",
     "items": [
       {
         "citation": "Williams, L. (2024/25)",
@@ -109,5 +123,8 @@
     "heading": "Interested in working together?",
     "paragraph": "Tell us about your system and what you're trying to shift.",
     "buttonLabel": "Get in touch"
+  },
+  "seo": {
+    "description": "Current work, advisory group memberships and publications from two decades of leadership in early years, public health and children's services."
   }
 }

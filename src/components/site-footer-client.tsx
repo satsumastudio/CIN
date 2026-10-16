@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTina, tinaField } from "tinacms/dist/react";
 import { Container } from "./container";
-import { primaryNav } from "@/lib/nav";
+import { ctaNav, primaryNav } from "@/lib/nav";
 import type { SiteSettingsQuery, SiteSettingsQueryVariables } from "../../tina/__generated__/types";
 
 export function SiteFooterClient({
@@ -37,17 +37,24 @@ export function SiteFooterClient({
 
         <div>
           <p className="mb-3 text-xs font-bold uppercase tracking-wide text-green-30t">
-            Explore
+            <span data-tina-field={tinaField(settings, "footerExploreHeading")}>
+              {settings.footerExploreHeading}
+            </span>
           </p>
           <ul className="text-sm">
-            {[...primaryNav, { label: "Get In Touch", href: "/get-in-touch" }].map(
+            {[...primaryNav(settings.navigation), ctaNav(settings.navigation)].map(
               (item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
                     className="focus-ring-invert group inline-flex min-h-11 items-center text-white/85 transition-colors hover:text-white"
                   >
-                    <span className="transition-transform duration-200 group-hover:translate-x-1">
+                    <span
+                      className="transition-transform duration-200 group-hover:translate-x-1"
+                      data-tina-field={
+                        settings.navigation ? tinaField(settings.navigation, item.field) : undefined
+                      }
+                    >
                       {item.label}
                     </span>
                   </Link>
@@ -59,7 +66,9 @@ export function SiteFooterClient({
 
         <div>
           <p className="mb-3 text-xs font-bold uppercase tracking-wide text-green-30t">
-            Get in touch
+            <span data-tina-field={tinaField(settings, "footerContactHeading")}>
+              {settings.footerContactHeading}
+            </span>
           </p>
           <a
             href={`mailto:${settings.contactEmail}`}
@@ -88,14 +97,16 @@ export function SiteFooterClient({
             <Link
               href="/privacy"
               className="focus-ring-invert inline-flex min-h-11 items-center transition-colors hover:text-white"
+              data-tina-field={tinaField(settings, "privacyLinkLabel")}
             >
-              Privacy Notice
+              {settings.privacyLinkLabel}
             </Link>
             <Link
               href="/terms"
               className="focus-ring-invert inline-flex min-h-11 items-center transition-colors hover:text-white"
+              data-tina-field={tinaField(settings, "termsLinkLabel")}
             >
-              Terms of Use
+              {settings.termsLinkLabel}
             </Link>
           </div>
         </Container>

@@ -29,7 +29,10 @@ export function NewsPostContent({
     <Band tone="white">
       <article className="mx-auto max-w-3xl">
         <span aria-hidden className={`rule-top mb-5 block ${rules[tone]}`} />
-        <p className="text-xs font-bold uppercase tracking-wide text-brand-blue/70">
+        <p
+          className="text-xs font-bold uppercase tracking-wide text-brand-blue/70"
+          data-tina-field={tinaField(post, "publishedAt")}
+        >
           {formatPostDate(post)}
         </p>
         <h1
