@@ -71,6 +71,11 @@ export function SiteFooterClient({
           <p className="mt-4 text-sm text-white/70" data-tina-field={tinaField(settings, "footerUncrcNote")}>
             {settings.footerUncrcNote}
           </p>
+          {settings.footerThanksNote && (
+            <p className="mt-4 text-sm text-white/70" data-tina-field={tinaField(settings, "footerThanksNote")}>
+              {settings.footerThanksNote}
+            </p>
+          )}
         </div>
       </Container>
 

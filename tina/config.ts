@@ -449,6 +449,7 @@ export default defineConfig({
         fields: [
           { type: "string", name: "footerBlurb", label: "Footer blurb", ui: { component: "textarea" } },
           { type: "string", name: "footerUncrcNote", label: "Footer UNCRC note", ui: { component: "textarea" } },
+          { type: "string", name: "footerThanksNote", label: "Footer thank-you note", ui: { component: "textarea" } },
           { type: "string", name: "contactEmail", label: "Main contact email" },
           { type: "string", name: "companyLine", label: "Company/copyright line" },
         ],
