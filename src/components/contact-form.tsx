@@ -8,47 +8,54 @@ type Status = "idle" | "submitting" | "success" | "error";
 
 type FormCopy = GetInTouchPageQuery["getInTouchPage"]["form"];
 
+// Submissions go straight from the visitor's browser to Web3Forms, which
+// emails them to the inbox this key was issued for and doesn't keep a copy.
+// Nothing passes through or is logged on our own hosting. The key only says
+// where to deliver, so it's safe to ship in the page.
+const WEB3FORMS_ACCESS_KEY = "7d502aa7-3ec3-4d6a-983c-67577ca54efd";
+
+const FAILED_MESSAGE =
+  "Sorry, your message didn't send. Please try again, or email us at info@childhoodisnow.co.uk.";
+
 // Labels and messages are edited in Tina (Get In Touch Page → Form section).
-// Error messages stay in code: they come from the server's validation.
+// The failure message stays in code so it always names a working address.
 export function ContactForm({ copy }: { copy: FormCopy }) {
   const field = (name: Exclude<keyof NonNullable<FormCopy>, "__typename">) =>
     copy ? tinaField(copy, name) : undefined;
   const [status, setStatus] = useState<Status>("idle");
-  const [error, setError] = useState<string | null>(null);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setStatus("submitting");
-    setError(null);
 
     const form = event.currentTarget;
     const data = new FormData(form);
-    const payload = {
-      firstName: data.get("firstName"),
-      lastName: data.get("lastName"),
-      email: data.get("email"),
-      phone: data.get("phone"),
-      message: data.get("message"),
-      mailingList: data.get("mailingList") === "on",
-    };
+    const name = `${data.get("firstName") ?? ""} ${data.get("lastName") ?? ""}`.trim();
 
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: `Website enquiry from ${name}`,
+          from_name: "Childhood is Now website",
+          // Web3Forms sets reply-to from "email", so replying answers the sender.
+          name,
+          email: data.get("email"),
+          phone: data.get("phone") || "Not given",
+          message: data.get("message"),
+          "Mailing list": data.get("mailingList") === "on" ? "Yes, opted in" : "No",
+          botcheck: data.get("botcheck") === "on",
+        }),
       });
-
-      if (!res.ok) {
-        const body = await res.json().catch(() => ({}));
-        throw new Error(body.error || "Something went wrong. Please try again.");
-      }
+      const body = await res.json().catch(() => ({}));
+      if (!res.ok || !body.success) throw new Error();
 
       setStatus("success");
       form.reset();
-    } catch (err) {
+    } catch {
       setStatus("error");
-      setError(err instanceof Error ? err.message : "Something went wrong.");
     }
   }
 
@@ -151,7 +158,14 @@ export function ContactForm({ copy }: { copy: FormCopy }) {
         <span data-tina-field={field("mailingListLabel")}>{copy?.mailingListLabel}</span>
       </label>
 
-      {error && <p className="text-sm text-brand-blue">{error}</p>}
+      {/* Honeypot: hidden from people, ticked by spam bots, rejected by Web3Forms. */}
+      <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
+
+      {status === "error" && (
+        <p role="alert" className="text-sm font-semibold text-brand-blue">
+          {FAILED_MESSAGE}
+        </p>
+      )}
 
       <button
         type="submit"
