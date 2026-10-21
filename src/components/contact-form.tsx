@@ -16,8 +16,8 @@ const WEB3FORMS_ACCESS_KEY = "7d502aa7-3ec3-4d6a-983c-67577ca54efd";
 
 // Ticking "join the mailing list" adds the person to the Newsletter Sign Ups
 // group in Childhood is Now's MailerLite account, again straight from the
-// browser. MailerLite then emails them a confirm link (double opt-in), so
-// nobody is subscribed without confirming.
+// browser. The box starts unticked, so ticking it is their consent, and they
+// join straight away (double opt-in is off in MailerLite).
 const MAILERLITE_SUBSCRIBE_URL =
   "https://assets.mailerlite.com/jsonp/2725193/forms/201933591740942027/subscribe";
 
@@ -63,7 +63,7 @@ export function ContactForm({ copy }: { copy: FormCopy }) {
     const mailingList = !wantsNews
       ? "No"
       : subscribed
-        ? "Yes, opted in. Added to MailerLite; they'll get an email to confirm."
+        ? "Yes, opted in. Added to the MailerLite list."
         : "Yes, opted in. Couldn't add them to MailerLite automatically, please add them by hand.";
 
     try {
