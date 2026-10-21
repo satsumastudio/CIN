@@ -25,6 +25,10 @@ const nextConfig: NextConfig = {
   images: {
     // AVIF first: roughly a fifth smaller than WebP for photography.
     formats: ["image/avif", "image/webp"],
+    // Fewer widths than Next's default eight: every width x format is its
+    // own cache entry, and on a quiet site most of them would be cold when
+    // a visitor arrives. These still cover phones at 3x up to large screens.
+    deviceSizes: [640, 828, 1080, 1440, 1920],
     remotePatterns: [
       // TinaCloud mirrors media referenced in content into its own CDN, so
       // image fields resolved through the cloud content API return

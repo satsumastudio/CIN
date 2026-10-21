@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import { CmsImage } from "@/components/cms-image";
 import { tinaField } from "tinacms/dist/react";
 import { Card } from "@/components/section-heading";
 import { formatPostDate } from "@/lib/news";
@@ -39,7 +39,7 @@ export function NewsCard({
     <>
       <div className="relative aspect-[16/10] w-full overflow-hidden">
         {post.coverImage && (
-          <Image
+          <CmsImage
             src={post.coverImage}
             alt={post.coverAlt ?? ""}
             fill

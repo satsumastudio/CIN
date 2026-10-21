@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { CmsImage } from "@/components/cms-image";
 import { useTina, tinaField } from "tinacms/dist/react";
 import { Band } from "@/components/page-band";
 import { formatPostDate } from "@/lib/news";
@@ -59,7 +59,7 @@ export function NewsPostContent({
             className="relative mt-10 aspect-[16/9] w-full overflow-hidden rounded-sm"
             data-tina-field={tinaField(post, "coverImage")}
           >
-            <Image
+            <CmsImage
               src={post.coverImage}
               alt={post.coverAlt ?? ""}
               fill

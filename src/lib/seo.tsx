@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { siteImage } from "@/lib/images";
 
 export const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL || "https://childhoodisnow.co.uk";
@@ -20,7 +21,8 @@ const defaultImage = {
 
 /** Absolute URL for a site path or an already-absolute media URL. */
 export function absoluteUrl(path: string) {
-  return path.startsWith("http") ? path : `${siteUrl}${path}`;
+  const local = siteImage(path);
+  return local.startsWith("http") ? local : `${siteUrl}${local}`;
 }
 
 /**
@@ -45,7 +47,7 @@ export function pageMetadata({
   publishedTime?: string;
 }): Metadata {
   const shareTitle = title ? `${title} | ${siteName}` : defaultTitle;
-  const images = image ? [{ url: image.url, alt: image.alt }] : [defaultImage];
+  const images = image ? [{ url: siteImage(image.url), alt: image.alt }] : [defaultImage];
 
   return {
     ...(title ? { title } : {}),

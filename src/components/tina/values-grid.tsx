@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { CmsImage } from "@/components/cms-image";
 import { useTina, tinaField } from "tinacms/dist/react";
 import { Card } from "@/components/section-heading";
 import type { ValueConnectionQuery, ValueConnectionQueryVariables } from "../../../tina/__generated__/types";
@@ -34,7 +34,7 @@ export function ValuesGrid({
             className={`mb-5 inline-flex h-12 w-12 items-center justify-center rounded-full ${chips[i % chips.length]}`}
           >
             {value.image && (
-              <Image src={value.image} alt="" width={28} height={28} className="h-6 w-6" />
+              <CmsImage src={value.image} alt="" width={28} height={28} className="h-6 w-6" />
             )}
           </span>
           <h3 className="text-lg" data-tina-field={tinaField(value, "title")}>

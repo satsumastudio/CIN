@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { CmsImage } from "@/components/cms-image";
 import { useTina, tinaField } from "tinacms/dist/react";
 import { Card } from "@/components/section-heading";
 import { Button } from "@/components/button";
@@ -31,7 +31,7 @@ export function TeamGrid({
         <Card key={member.id} hover className="flex flex-col overflow-hidden">
           <div className="relative aspect-[4/3] w-full overflow-hidden">
             {member.photo && (
-              <Image
+              <CmsImage
                 src={member.photo}
                 alt={member.name ?? ""}
                 fill

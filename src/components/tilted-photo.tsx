@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { CmsImage } from "@/components/cms-image";
 
 type BlockColour = "green" | "yellow" | "red" | "blue";
 
@@ -54,7 +54,7 @@ export function TiltedPhoto({
       <div
         className={`stack-front ${aspect} w-full overflow-hidden rounded-sm shadow-sm transition-shadow duration-300 group-hover:shadow-xl ${front}`}
       >
-        <Image
+        <CmsImage
           src={src}
           alt={alt}
           fill
