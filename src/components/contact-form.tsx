@@ -14,6 +14,29 @@ type FormCopy = GetInTouchPageQuery["getInTouchPage"]["form"];
 // where to deliver, so it's safe to ship in the page.
 const WEB3FORMS_ACCESS_KEY = "7d502aa7-3ec3-4d6a-983c-67577ca54efd";
 
+// Ticking "join the mailing list" adds the person to the Newsletter Sign Ups
+// group in Childhood is Now's MailerLite account, again straight from the
+// browser. MailerLite then emails them a confirm link (double opt-in), so
+// nobody is subscribed without confirming.
+const MAILERLITE_SUBSCRIBE_URL =
+  "https://assets.mailerlite.com/jsonp/2725193/forms/201933591740942027/subscribe";
+
+async function subscribeToMailingList(email: string, name: string) {
+  try {
+    const body = new URLSearchParams({
+      "fields[email]": email,
+      "fields[name]": name,
+      "ml-submit": "1",
+      anticsrf: "true",
+    });
+    const res = await fetch(MAILERLITE_SUBSCRIBE_URL, { method: "POST", body });
+    const json = await res.json().catch(() => ({}));
+    return res.ok && json.success === true;
+  } catch {
+    return false;
+  }
+}
+
 const FAILED_MESSAGE =
   "Sorry, your message didn't send. Please try again, or email us at info@childhoodisnow.co.uk.";
 
@@ -31,6 +54,17 @@ export function ContactForm({ copy }: { copy: FormCopy }) {
     const form = event.currentTarget;
     const data = new FormData(form);
     const name = `${data.get("firstName") ?? ""} ${data.get("lastName") ?? ""}`.trim();
+    const email = String(data.get("email") ?? "");
+    const wantsNews = data.get("mailingList") === "on";
+
+    // A failed sign-up mustn't block the enquiry; the email to info@ says
+    // whether it worked, so they can add the person by hand if not.
+    const subscribed = wantsNews ? await subscribeToMailingList(email, name) : false;
+    const mailingList = !wantsNews
+      ? "No"
+      : subscribed
+        ? "Yes, opted in. Added to MailerLite; they'll get an email to confirm."
+        : "Yes, opted in. Couldn't add them to MailerLite automatically, please add them by hand.";
 
     try {
       const res = await fetch("https://api.web3forms.com/submit", {
@@ -42,10 +76,10 @@ export function ContactForm({ copy }: { copy: FormCopy }) {
           from_name: "Childhood is Now website",
           // Web3Forms sets reply-to from "email", so replying answers the sender.
           name,
-          email: data.get("email"),
+          email,
           phone: data.get("phone") || "Not given",
           message: data.get("message"),
-          "Mailing list": data.get("mailingList") === "on" ? "Yes, opted in" : "No",
+          "Mailing list": mailingList,
           botcheck: data.get("botcheck") === "on",
         }),
       });
