@@ -1,7 +1,11 @@
 {
-  "title": "Coming soon",
+  "title": "what it is",
   "publishedAt": "2026-12-01T00:00:00.000Z",
   "comingSoon": true,
+  "excerpt": "1",
   "coverImage": "/images/photography/child-drawing-with-crayons.jpg",
-  "coverAlt": "A young child draws with wax crayons on a large sheet of paper while an adult sorts the crayons"
+  "coverAlt": "A young child draws with wax crayons on a large sheet of paper while an adult sorts the crayons",
+  "body": [
+    "hello"
+  ]
 }
