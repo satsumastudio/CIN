@@ -25,3 +25,30 @@ export function formatPostDate(post: PostTiming): string {
     timeZone: "Europe/London",
   });
 }
+
+type RichTextNode = { type?: string; text?: string; children?: RichTextNode[] };
+
+// Plain text of a rich-text article, for when no summary has been written.
+function richTextToPlain(node: unknown): string {
+  if (!node || typeof node !== "object") return "";
+  const n = node as RichTextNode;
+  if (typeof n.text === "string") return n.text;
+  const inner = (n.children ?? []).map(richTextToPlain).join(n.type === "root" ? " " : "");
+  return inner.replace(/\s+/g, " ").trim();
+}
+
+// The written summary, or the article's opening trimmed to a sentence
+// boundary near `max` characters, so cards and search snippets never end
+// mid-word.
+export function postSummary(
+  post: { excerpt?: string | null; body?: unknown },
+  max = 160
+): string {
+  if (post.excerpt?.trim()) return post.excerpt.trim();
+  const text = richTextToPlain(post.body);
+  if (text.length <= max) return text;
+  const cut = text.slice(0, max);
+  const sentenceEnd = cut.lastIndexOf(". ");
+  if (sentenceEnd > max * 0.5) return cut.slice(0, sentenceEnd + 1);
+  return `${cut.slice(0, cut.lastIndexOf(" "))}…`;
+}

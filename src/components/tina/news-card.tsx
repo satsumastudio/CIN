@@ -2,7 +2,7 @@ import Link from "next/link";
 import { CmsImage } from "@/components/cms-image";
 import { tinaField } from "tinacms/dist/react";
 import { Card } from "@/components/section-heading";
-import { formatPostDate } from "@/lib/news";
+import { formatPostDate, postSummary } from "@/lib/news";
 
 type CardPost = {
   title: string;
@@ -11,6 +11,7 @@ type CardPost = {
   excerpt?: string | null;
   coverImage?: string | null;
   coverAlt?: string | null;
+  body?: unknown;
   _sys: { filename: string };
 };
 
@@ -24,6 +25,7 @@ export function NewsCard({
   large = false,
   showExcerpt = false,
   priority = false,
+  linkLabel,
 }: {
   post: CardPost;
   sizes: string;
@@ -32,6 +34,8 @@ export function NewsCard({
   showExcerpt?: boolean;
   /** Load eagerly at high priority — for a card that's above the fold. */
   priority?: boolean;
+  /** From the News Page document in Tina. */
+  linkLabel?: string;
 }) {
   const live = !post.comingSoon;
 
@@ -63,13 +67,20 @@ export function NewsCard({
         >
           {post.title}
         </Title>
-        {showExcerpt && post.excerpt && (
+        {showExcerpt && live && postSummary(post) && (
           <p
             className="mt-2 flex-1 text-sm leading-relaxed text-brand-blue/75"
-            data-tina-field={tinaField(post, "excerpt")}
+            data-tina-field={tinaField(post, post.excerpt ? "excerpt" : "body")}
           >
-            {post.excerpt}
+            {postSummary(post)}
           </p>
+        )}
+        {live && (
+          // Not a click-to-edit target, so in the Tina preview this is the
+          // part of the card that opens the article.
+          <span className="link-arrow mt-4 text-sm font-bold text-brand-blue">
+            {linkLabel || "Read article →"}
+          </span>
         )}
       </div>
     </>

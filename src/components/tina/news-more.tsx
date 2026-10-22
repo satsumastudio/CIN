@@ -19,10 +19,12 @@ export function NewsMore({
   currentSlug,
   heading,
   linkLabel,
+  cardLinkLabel,
 }: {
   data: PostConnectionQuery;
   query: string;
   variables: PostConnectionQueryVariables;
+  cardLinkLabel?: string;
   currentSlug: string;
   /** From the News Page document in Tina. */
   heading?: string | null;
@@ -51,7 +53,7 @@ export function NewsMore({
 
       <div className="mt-10 grid gap-6 sm:grid-cols-2">
         {posts.map((post) => (
-          <NewsCard key={post.id} post={post} sizes="(min-width: 640px) 50vw, 92vw" />
+          <NewsCard key={post.id} post={post} sizes="(min-width: 640px) 50vw, 92vw" linkLabel={cardLinkLabel} />
         ))}
       </div>
     </>

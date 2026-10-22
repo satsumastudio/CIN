@@ -9,10 +9,12 @@ export function NewsList({
   data: initialData,
   query,
   variables,
+  cardLinkLabel,
 }: {
   data: PostConnectionQuery;
   query: string;
   variables: PostConnectionQueryVariables;
+  cardLinkLabel?: string;
 }) {
   const { data } = useTina({ query, variables, data: initialData });
   const posts = sortPosts(
@@ -29,6 +31,7 @@ export function NewsList({
             titleAs="h2"
             large
             showExcerpt
+            linkLabel={cardLinkLabel}
             // The first row is the page's main image, above the fold.
             priority={i < 2}
           />

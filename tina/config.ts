@@ -492,6 +492,11 @@ export default defineConfig({
             ],
           },
           {
+            type: "string",
+            name: "cardLinkLabel",
+            label: "\"Read article\" link on news cards",
+          },
+          {
             type: "object",
             name: "more",
             label: "\"More from us\" (below each article)",
@@ -596,22 +601,71 @@ export default defineConfig({
         label: "News Posts",
         path: "content/posts",
         format: "json",
+        // A new post starts dated today and published, so writing one is:
+        // title, cover photo, article, save.
+        defaultItem: () => ({
+          publishedAt: new Date().toISOString(),
+          comingSoon: false,
+        }),
         fields: [
           { type: "string", name: "title", label: "Title", isTitle: true, required: true },
-          { type: "datetime", name: "publishedAt", label: "Published date" },
+          {
+            type: "datetime",
+            name: "publishedAt",
+            label: "Date",
+            description: "Shown on the article and used to order the news page. New posts start on today's date.",
+            required: true,
+          },
+          { type: "image", name: "coverImage", label: "Cover photo", description: "Landscape photos work best." },
+          {
+            type: "string",
+            name: "coverAlt",
+            label: "Cover photo description (alt text)",
+            description: "Describe what's in the photo for people using screen readers.",
+          },
+          {
+            type: "string",
+            name: "excerpt",
+            label: "Summary",
+            description:
+              "One or two sentences for the news card and Google. Leave blank to use the start of the article.",
+            ui: { component: "textarea" },
+          },
+          {
+            type: "rich-text",
+            name: "body",
+            label: "Article",
+            description: "Use the toolbar for subheadings, bold, links, lists, quotes and photos.",
+            overrides: {
+              toolbar: ["heading", "bold", "italic", "link", "ul", "ol", "quote", "image", "hr"],
+              headingLevels: ["h2", "h3"],
+            },
+          },
           {
             type: "boolean",
             name: "comingSoon",
             label: "Coming soon placeholder",
             description:
-              "Shows as a card with just the month and no link. Untick once the article is written to publish it.",
+              "Tick to show just a dated card with no link, for an article that isn't written yet. Leave unticked to publish.",
           },
-          { type: "string", name: "excerpt", label: "Excerpt", ui: { component: "textarea" } },
-          { type: "image", name: "coverImage", label: "Cover image" },
-          { type: "string", name: "coverAlt", label: "Cover image alt text" },
-          paragraphList("Body (paragraphs)", "body"),
         ],
         ui: {
+          // The page address comes from the title, so there's no filename to
+          // fill in. It's fixed once created so links to the post never break.
+          allowedActions: { createFolder: false, createNestedFolder: false },
+          filename: {
+            readonly: true,
+            description:
+              "Filled in automatically from the title. It becomes the article's web address, so there's no need to change it.",
+            slugify: (values) =>
+              `${values?.title ?? ""}`
+                .toLowerCase()
+                .normalize("NFKD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .replace(/[^a-z0-9]+/g, "-")
+                .replace(/^-+|-+$/g, "")
+                .slice(0, 80) || "untitled-post",
+          },
           router: ({ document }) => `/news/${document._sys.filename}`,
         },
       },

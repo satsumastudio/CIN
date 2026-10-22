@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { Band } from "@/components/page-band";
 import { SectionCurve } from "@/components/section-curve";
 import { NewsMore } from "@/components/tina/news-more";
 import { NewsPostContent } from "@/components/tina/news-post";
 import { getNewsTeaserProps } from "@/lib/tina-data";
+import { postSummary } from "@/lib/news";
 import {
   JsonLd,
   absoluteUrl,
@@ -14,9 +16,18 @@ import {
 } from "@/lib/seo";
 import client from "../../../../../tina/__generated__/client";
 
-// Every post in the CMS gets a page at build time, and every CMS save
-// redeploys, so a slug that wasn't built here doesn't exist.
-export const dynamicParams = false;
+// Every post gets a page at build time. A post saved in the CMS since the
+// last deploy is rendered on first request instead, so the editor's preview
+// works the moment a new post is saved rather than after the redeploy.
+export const dynamicParams = true;
+
+async function getPost(slug: string) {
+  try {
+    return await client.queries.post({ relativePath: `${slug}.json` });
+  } catch {
+    notFound();
+  }
+}
 
 export async function generateStaticParams() {
   const { data } = await client.queries.postConnection({});
@@ -31,13 +42,13 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const { data } = await client.queries.post({ relativePath: `${slug}.json` });
+  const { data } = await getPost(slug);
   const post = data.post;
   return {
     ...pageMetadata({
       title: post.title,
       description:
-        post.excerpt || "Updates, insight and announcements from Childhood is Now.",
+        postSummary(post) || "Updates, insight and announcements from Childhood is Now.",
       path: `/news/${slug}`,
       image: post.coverImage
         ? { url: post.coverImage, alt: post.coverAlt ?? post.title }
@@ -57,9 +68,7 @@ export default async function NewsPostPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const { data, query, variables } = await client.queries.post({
-    relativePath: `${slug}.json`,
-  });
+  const { data, query, variables } = await getPost(slug);
   const [moreProps, newsPage] = await Promise.all([
     getNewsTeaserProps(),
     client.queries.newsPage({ relativePath: "news.json" }),
@@ -77,7 +86,7 @@ export default async function NewsPostPage({
               {
                 "@type": "Article",
                 headline: post.title,
-                description: post.excerpt ?? undefined,
+                description: postSummary(post) || undefined,
                 datePublished: post.publishedAt ?? undefined,
                 image: post.coverImage ? absoluteUrl(post.coverImage) : undefined,
                 mainEntityOfPage: `${siteUrl}/news/${slug}`,

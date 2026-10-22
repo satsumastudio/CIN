@@ -2,11 +2,14 @@
 
 import { CmsImage } from "@/components/cms-image";
 import { useTina, tinaField } from "tinacms/dist/react";
+import { RichText } from "@/components/tina/rich-text";
 import { Band } from "@/components/page-band";
 import { formatPostDate } from "@/lib/news";
 import type { PostQuery, PostQueryVariables } from "../../../tina/__generated__/types";
 
 const rules = ["bg-green-50t", "bg-red-50t", "bg-yellow-50t", "bg-blue-50t"];
+
+// Typography for the article lives in .article-body (globals.css).
 
 export function NewsPostContent({
   data: initialData,
@@ -71,14 +74,11 @@ export function NewsPostContent({
           </div>
         )}
 
-        <div
-          className="mt-12 space-y-5 text-lg leading-relaxed text-brand-blue/80"
-          data-tina-field={tinaField(post, "body")}
-        >
-          {(post.body ?? []).map((paragraph, i) => (
-            <p key={i}>{paragraph}</p>
-          ))}
-        </div>
+        {post.body && (
+          <div className="article-body mt-12" data-tina-field={tinaField(post, "body")}>
+            <RichText content={post.body} />
+          </div>
+        )}
       </article>
     </Band>
   );

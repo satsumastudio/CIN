@@ -9,10 +9,12 @@ export function NewsTeaser({
   data: initialData,
   query,
   variables,
+  cardLinkLabel,
 }: {
   data: PostConnectionQuery;
   query: string;
   variables: PostConnectionQueryVariables;
+  cardLinkLabel?: string;
 }) {
   const { data } = useTina({ query, variables, data: initialData });
   const posts = sortPosts(
@@ -22,7 +24,7 @@ export function NewsTeaser({
   return (
     <div className="mt-12 grid gap-6 sm:grid-cols-3">
       {posts.map((post) => (
-        <NewsCard key={post.id} post={post} sizes="(min-width: 640px) 33vw, 92vw" />
+        <NewsCard key={post.id} post={post} sizes="(min-width: 640px) 33vw, 92vw" linkLabel={cardLinkLabel} />
       ))}
     </div>
   );
