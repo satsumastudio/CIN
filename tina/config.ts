@@ -396,6 +396,19 @@ export default defineConfig({
                   { type: "string", name: "citation", label: "Citation" },
                   { type: "string", name: "description", label: "Description", ui: { component: "textarea" } },
                   { type: "string", name: "link", label: "Link (optional)" },
+                  {
+                    type: "object",
+                    name: "links",
+                    label: "Named links (optional)",
+                    description:
+                      "For a publication with more than one document. Each link shows its own label, e.g. the leaflet title.",
+                    list: true,
+                    ui: { itemProps: (item) => ({ label: item?.label }) },
+                    fields: [
+                      { type: "string", name: "label", label: "Label" },
+                      { type: "string", name: "url", label: "Link" },
+                    ],
+                  },
                 ],
               },
             ],

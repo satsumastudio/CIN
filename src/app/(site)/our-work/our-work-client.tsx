@@ -138,6 +138,25 @@ export function OurWorkClient({
                   {content.publicationsSection?.linkLabel}
                 </a>
               )}
+              {(pub?.links ?? []).length > 0 && (
+                <ul className="mt-2 flex flex-col items-start">
+                  {(pub?.links ?? []).map((l, j) =>
+                    l?.url ? (
+                      <li key={j}>
+                        <a
+                          href={l.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="link-arrow focus-ring min-h-11 items-center text-sm font-bold text-brand-blue underline underline-offset-4 transition-colors hover:text-blue-50t"
+                          data-tina-field={tinaField(l, "label")}
+                        >
+                          {l.label ? `${l.label} →` : content.publicationsSection?.linkLabel}
+                        </a>
+                      </li>
+                    ) : null
+                  )}
+                </ul>
+              )}
             </li>
           ))}
         </ul>
