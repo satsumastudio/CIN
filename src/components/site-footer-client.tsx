@@ -93,7 +93,7 @@ export function SiteFooterClient({
           <p className="text-balance text-center sm:text-left" data-tina-field={tinaField(settings, "companyLine")}>
             © Childhood is Now {new Date().getFullYear()}. {settings.companyLine}
           </p>
-          <div className="flex shrink-0 gap-5">
+          <div className="flex shrink-0 flex-wrap justify-center gap-x-5">
             <Link
               href="/privacy"
               className="focus-ring-invert inline-flex min-h-11 items-center transition-colors hover:text-white"
@@ -108,6 +108,19 @@ export function SiteFooterClient({
             >
               {settings.termsLinkLabel}
             </Link>
+            {/* Studio credit: kept in code rather than Tina so it can't be
+                removed by accident. */}
+            <span className="inline-flex min-h-11 items-center">
+              Made by&nbsp;
+              <a
+                href="https://satsuma.studio/"
+                target="_blank"
+                rel="noopener"
+                className="focus-ring-invert underline-offset-4 transition-colors hover:text-white hover:underline"
+              >
+                Satsuma
+              </a>
+            </span>
           </div>
         </Container>
       </div>
