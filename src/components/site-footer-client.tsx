@@ -5,7 +5,10 @@ import Link from "next/link";
 import { useTina, tinaField } from "tinacms/dist/react";
 import { Container } from "./container";
 import { ctaNav, primaryNav } from "@/lib/nav";
-import type { SiteSettingsQuery, SiteSettingsQueryVariables } from "../../tina/__generated__/types";
+import type {
+  SiteSettingsQuery,
+  SiteSettingsQueryVariables,
+} from "../../tina/__generated__/types";
 
 export function SiteFooterClient({
   data: initialData,
@@ -30,7 +33,10 @@ export function SiteFooterClient({
             height={48}
             className="mb-4 h-12 w-auto"
           />
-          <p className="max-w-xs text-sm text-white/85" data-tina-field={tinaField(settings, "footerBlurb")}>
+          <p
+            className="max-w-xs text-sm text-white/85"
+            data-tina-field={tinaField(settings, "footerBlurb")}
+          >
             {settings.footerBlurb}
           </p>
         </div>
@@ -42,25 +48,28 @@ export function SiteFooterClient({
             </span>
           </p>
           <ul className="text-sm">
-            {[...primaryNav(settings.navigation), ctaNav(settings.navigation)].map(
-              (item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="focus-ring-invert group inline-flex min-h-11 items-center text-white/85 transition-colors hover:text-white"
+            {[
+              ...primaryNav(settings.navigation),
+              ctaNav(settings.navigation),
+            ].map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className="focus-ring-invert group inline-flex min-h-11 items-center text-white/85 transition-colors hover:text-white"
+                >
+                  <span
+                    className="transition-transform duration-200 group-hover:translate-x-1"
+                    data-tina-field={
+                      settings.navigation
+                        ? tinaField(settings.navigation, item.field)
+                        : undefined
+                    }
                   >
-                    <span
-                      className="transition-transform duration-200 group-hover:translate-x-1"
-                      data-tina-field={
-                        settings.navigation ? tinaField(settings.navigation, item.field) : undefined
-                      }
-                    >
-                      {item.label}
-                    </span>
-                  </Link>
-                </li>
-              )
-            )}
+                    {item.label}
+                  </span>
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -77,11 +86,17 @@ export function SiteFooterClient({
           >
             {settings.contactEmail}
           </a>
-          <p className="mt-4 text-sm text-white/70" data-tina-field={tinaField(settings, "footerUncrcNote")}>
+          <p
+            className="mt-4 text-sm text-white/70"
+            data-tina-field={tinaField(settings, "footerUncrcNote")}
+          >
             {settings.footerUncrcNote}
           </p>
           {settings.footerThanksNote && (
-            <p className="mt-4 text-sm text-white/70" data-tina-field={tinaField(settings, "footerThanksNote")}>
+            <p
+              className="mt-4 text-sm text-white/70"
+              data-tina-field={tinaField(settings, "footerThanksNote")}
+            >
               {settings.footerThanksNote}
             </p>
           )}
@@ -90,24 +105,32 @@ export function SiteFooterClient({
 
       <div className="border-t border-white/20">
         <Container className="flex flex-col items-center justify-between gap-2 py-5 text-xs text-white/70 sm:flex-row">
-          <p className="text-balance text-center sm:text-left" data-tina-field={tinaField(settings, "companyLine")}>
-            © Childhood is Now {new Date().getFullYear()}. {settings.companyLine}
+          <p
+            className="text-balance text-center sm:text-left"
+            data-tina-field={tinaField(settings, "companyLine")}
+          >
+            © Childhood is Now {new Date().getFullYear()}.{" "}
+            {settings.companyLine}
           </p>
-          <div className="flex shrink-0 flex-wrap justify-center gap-x-5">
-            <Link
-              href="/privacy"
-              className="focus-ring-invert inline-flex min-h-11 items-center transition-colors hover:text-white"
-              data-tina-field={tinaField(settings, "privacyLinkLabel")}
-            >
-              {settings.privacyLinkLabel}
-            </Link>
-            <Link
-              href="/terms"
-              className="focus-ring-invert inline-flex min-h-11 items-center transition-colors hover:text-white"
-              data-tina-field={tinaField(settings, "termsLinkLabel")}
-            >
-              {settings.termsLinkLabel}
-            </Link>
+          {/* Phones: legal links on one line, studio credit centred beneath.
+              Wider screens: all three on one line. */}
+          <div className="flex shrink-0 flex-col items-center sm:flex-row sm:gap-5">
+            <div className="flex gap-5">
+              <Link
+                href="/privacy"
+                className="focus-ring-invert inline-flex min-h-11 items-center transition-colors hover:text-white"
+                data-tina-field={tinaField(settings, "privacyLinkLabel")}
+              >
+                {settings.privacyLinkLabel}
+              </Link>
+              <Link
+                href="/terms"
+                className="focus-ring-invert inline-flex min-h-11 items-center transition-colors hover:text-white"
+                data-tina-field={tinaField(settings, "termsLinkLabel")}
+              >
+                {settings.termsLinkLabel}
+              </Link>
+            </div>
             {/* Studio credit: kept in code rather than Tina so it can't be
                 removed by accident. */}
             <span className="inline-flex min-h-11 items-center">
