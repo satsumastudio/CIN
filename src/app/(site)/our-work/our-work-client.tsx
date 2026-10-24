@@ -6,6 +6,7 @@ import { SectionCurve } from "@/components/section-curve";
 import { Band, PageBand } from "@/components/page-band";
 import { SectionHeading, Card } from "@/components/section-heading";
 import { TiltedPhoto } from "@/components/tilted-photo";
+import { RichText } from "@/components/tina/rich-text";
 import { Button } from "@/components/button";
 import type { OurWorkPageQuery, OurWorkPageQueryVariables } from "../../../../tina/__generated__/types";
 
@@ -54,19 +55,32 @@ export function OurWorkClient({
           </div>
         </div>
 
-        {/* Track record grid temporarily hidden at the client's request.
-            Content is untouched in our-work.json — flip this back to true
-            to restore it. */}
-        {false && (
-          <ul className="mt-14 grid gap-4 sm:grid-cols-2" data-tina-field={tinaField(content.trackRecord, "items")}>
-            {(content.trackRecord?.items ?? []).map((item, i) => (
-              <li key={i}>
-                <Card className="h-full p-5">
-                  <p className="text-sm leading-relaxed text-brand-blue/80">{item}</p>
-                </Card>
-              </li>
-            ))}
-          </ul>
+        {(content.trackRecord?.items ?? []).length > 0 && (
+          <div className="mt-16">
+            <h3
+              className="max-w-3xl text-balance text-2xl text-brand-blue sm:text-3xl"
+              data-tina-field={tinaField(content.trackRecord, "heading")}
+            >
+              {content.trackRecord?.heading}
+            </h3>
+            <ul className="mt-8 grid gap-4 sm:grid-cols-2">
+              {(content.trackRecord?.items ?? []).map((item, i) => (
+                <li key={i}>
+                  <Card className="h-full p-5">
+                    <p className="font-bold text-brand-blue" data-tina-field={tinaField(item, "title")}>
+                      {item?.title}
+                    </p>
+                    <div
+                      className="track-record-text mt-2 text-sm leading-relaxed text-brand-blue/80"
+                      data-tina-field={tinaField(item, "description")}
+                    >
+                      <RichText content={item?.description} />
+                    </div>
+                  </Card>
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
       </Band>
 

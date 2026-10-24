@@ -10,15 +10,56 @@
     "imageAlt": "A toddler's hand pushes a wooden toy train along a track on a wooden floor"
   },
   "trackRecord": {
+    "heading": "Childhood is Now’s current work and examples of our individual previous work",
     "items": [
-      "National Centre for Family Hubs regional leadership and contribution to national support on Best Start in Life and Inclusion Toolkit (Local Government Association)",
-      "Finalist for a Health Services Journal Award (Reducing Inequalities and Improving Outcomes for Children and Young People) and winner of the 2025 Excellence in Health Creation Award for Best Health-Creating Grassroots Approach to Reducing the Impact of Long-Term Conditions",
-      "Strategic programme development to address health inequalities for babies, children and young people within a London borough, recognised as good practice across North-West London (NWL) in asthma prevention and care through the Getting It Right First Time (GIRFT) assessment",
-      "Leadership of the redevelopment, evaluation and scaling of NSPCC's Pregnancy in Mind (PiM) programme",
-      "Programme development leadership for the translation and implementation of an innovative U.S. evidence-based parent infant relationship approach adopted by the NSPCC to improve permanency decisions and the mental health of children under 5 in care proceedings due to maltreatment, supported by an NIHR-funded RCT",
-      "Development, training and national rollout of recognised evidence-informed Home Learning Environment programmes, including NCB's Making it REAL (Raising Early Achievement in Literacy) and Save the Children UK's Families Connect, supported by RCT evidence of impact on children's social and emotional development and parental self-efficacy",
-      "Programme and project management of C4EO (Centre for Excellence and Outcomes in Children and Young People's Services)",
-      "Senior involvement in the National Evaluation of Sure Start (NESS) and over eight years of subsequent consultancy support to Sure Start Children's Centres, NHS and local authorities"
+      {
+        "title": "Better Start Associate",
+        "description": "Bringing early years and system leadership expertise to help places turn Better Start’s learning, evidence and experience into meaningful, lasting change."
+      },
+      {
+        "title": "National Literacy Trust Associate",
+        "description": "Supporting place-based systems change."
+      },
+      {
+        "title": "Families First Regional Adviser",
+        "description": "Supporting the DfE rollout of the Dingley's Promise Early Educator Inclusion Training."
+      },
+      {
+        "title": "National Centre for Family Hubs Regional Adviser",
+        "description": "Contributing to national support on **Best Start in Life** and LA Inclusion Toolkit (Local Government Association)."
+      },
+      {
+        "title": "Award-winning programme development",
+        "description": "Programme recognised as a finalist for a **Health Service Journal Award** for Reducing Inequalities and Improving Outcomes for Children and Young People, and winner of the **2025 Excellence in Health Creation Award** for Best Health-Creating Grassroots Approach to Reducing the Impact of Long-Term Conditions."
+      },
+      {
+        "title": "Reducing health inequalities",
+        "description": "Led strategic programme development for babies, children and young people in a London borough, with asthma prevention and care recognised as good practice across **North West London** through the **Getting It Right First Time (GIRFT)** assessment."
+      },
+      {
+        "title": "Transforming perinatal mental health support",
+        "description": "Led the redevelopment, evaluation and adaptation to virtual delivery during COVID-19 of **NSPCC’s Pregnancy in Mind (PiM)** programme."
+      },
+      {
+        "title": "Strengthening parent–infant relationships",
+        "description": "Programme development leadership for **NSPCC’s Infant and Family Teams (IFT)**, adapting a US evidence-based approach to the UK to improve parent–infant relationships and inform permanency decisions for children under five in care proceedings due to maltreatment, with evaluation supported by an **NIHR-funded randomised controlled trial**."
+      },
+      {
+        "title": "Development, training and national rollout of recognised evidence-informed Home Learning Environment programmes",
+        "description": "Including **NCB’s Making it REAL** (Raising Early Achievement in Literacy) and **Save the Children UK’s Families Connect programme** supported by RCT evidence of impact on children’s social and emotional development and parental self-efficacy."
+      },
+      {
+        "title": "C4EO",
+        "description": "(Centre for Excellence and Outcomes in Children and Young People’s Services): Programme and project management."
+      },
+      {
+        "title": "Sure Start national evaluation",
+        "description": "Served as an Evaluation Advisor to Sure Start Local Programmes through the **National Evaluation of Sure Start (NESS)**."
+      },
+      {
+        "title": "Research, evaluation and consultancy",
+        "description": "Led a research, evaluation and training consultancy for eight years, working with **Sure Start Children’s Centres, schools, local authorities, NHS and VCFSE organisations** to demonstrate the impact of their work on babies, children, families and communities."
+      }
     ]
   },
   "advisory": {

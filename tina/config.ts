@@ -344,8 +344,27 @@ export default defineConfig({
           {
             type: "object",
             name: "trackRecord",
-            label: "Track record list",
-            fields: [paragraphList("Items", "items")],
+            label: "Current and previous work",
+            fields: [
+              { type: "string", name: "heading", label: "Heading" },
+              {
+                type: "object",
+                name: "items",
+                label: "Items",
+                list: true,
+                ui: { itemProps: (item) => ({ label: item?.title }) },
+                fields: [
+                  { type: "string", name: "title", label: "Title (shown in bold)" },
+                  {
+                    type: "rich-text",
+                    name: "description",
+                    label: "Description",
+                    description: "Use bold to highlight programme and organisation names.",
+                    overrides: { toolbar: ["bold", "italic", "link"] },
+                  },
+                ],
+              },
+            ],
           },
           {
             type: "object",
