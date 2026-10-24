@@ -25,8 +25,12 @@
   "mission": {
     "heading": "Every baby and child deserves the best childhood",
     "paragraphs": [
-      "At Childhood is Now, we believe that every child deserves the best start in life, and that means listening deeply, acting early and building creative solutions together that last.",
-      "We know that the everyday decisions made by local systems shape all children's earliest experiences, but the consequences of those decisions are felt most greatly by children growing up in underserved communities or challenging circumstances."
+      {
+        "text": "At Childhood is Now, we believe that every child deserves the best start in life, and that means listening deeply, acting early and building creative solutions together that last."
+      },
+      {
+        "text": "We know that the everyday decisions made by local systems shape all children's earliest experiences, but the consequences of those decisions are felt most greatly by children growing up in underserved communities or challenging circumstances."
+      }
     ],
     "image": "/images/photography/father-and-baby-on-beach.jpg",
     "imageAlt": "A smiling father in glasses holds his laughing baby close on a sandy beach"

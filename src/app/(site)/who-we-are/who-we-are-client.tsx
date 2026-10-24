@@ -47,7 +47,9 @@ export function WhoWeAreClient({
             </SectionHeading>
             <div className="mt-6 space-y-4 leading-relaxed text-brand-blue/75" data-tina-field={tinaField(content.intro, "paragraphs")}>
               {(content.intro?.paragraphs ?? []).map((p, i) => (
-                <p key={i}>{p}</p>
+                <p key={i} data-tina-field={p ? tinaField(p, "text") : undefined}>
+                  {p?.text}
+                </p>
               ))}
             </div>
           </div>

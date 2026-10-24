@@ -18,12 +18,21 @@ const singleton = (name: string, routePath: string) => ({
   },
 });
 
-const paragraphList = (label: string, name = "paragraphs") => ({
-  type: "string" as const,
+// A list of paragraphs or bullets. Each item is an object with its own
+// text box: a plain string list with a textarea editor shows the whole list
+// as one comma-joined box and saves it back as a single item.
+const paragraphList = (label: string, name = "paragraphs", itemLabel = "Paragraph") => ({
+  type: "object" as const,
   name,
   label,
   list: true,
-  ui: { component: "textarea" as const },
+  ui: {
+    itemProps: (item: { text?: string }) => ({
+      label: item?.text ? `${item.text.slice(0, 60)}${item.text.length > 60 ? "…" : ""}` : itemLabel,
+    }),
+    defaultItem: { text: "" },
+  },
+  fields: [{ type: "string" as const, name: "text", label: itemLabel, ui: { component: "textarea" as const } }],
 });
 
 // What Google shows under the page title in search results. Optional:
@@ -296,7 +305,7 @@ export default defineConfig({
                 fields: [
                   { type: "string", name: "title", label: "Title" },
                   { type: "string", name: "description", label: "Description", ui: { component: "textarea" } },
-                  paragraphList("Bullets", "bullets"),
+                  paragraphList("Bullets", "bullets", "Bullet"),
                 ],
               },
             ],

@@ -29,7 +29,7 @@ export function TeamMemberContent({
   const tone = seed % 4;
   const tilt = seed % 2 === 0 ? "left" : "right";
 
-  const [lede, ...rest] = member.fullBio ?? [];
+  const [lede, ...rest] = (member.fullBio ?? []).filter((p) => p?.text);
 
   return (
     <Band tone="white">
@@ -76,9 +76,9 @@ export function TeamMemberContent({
         {lede && (
           <p
             className="mt-12 text-balance text-xl leading-snug text-brand-blue sm:text-2xl"
-            data-tina-field={tinaField(member, "fullBio", 0)}
+            data-tina-field={tinaField(lede, "text")}
           >
-            {lede}
+            {lede.text}
           </p>
         )}
 
@@ -86,8 +86,8 @@ export function TeamMemberContent({
           <Card className="mt-8 p-6 sm:p-8">
             <div className="space-y-5 text-brand-blue/80 leading-relaxed">
               {rest.map((paragraph, i) => (
-                <p key={i} data-tina-field={tinaField(member, "fullBio", i + 1)}>
-                  {paragraph}
+                <p key={i} data-tina-field={paragraph ? tinaField(paragraph, "text") : undefined}>
+                  {paragraph?.text}
                 </p>
               ))}
             </div>

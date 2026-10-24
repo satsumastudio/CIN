@@ -8,7 +8,7 @@ export type TeamMember = {
   email: string;
   photo: string;
   shortBio: string;
-  fullBio: string[];
+  fullBio: { text: string }[];
 };
 
 // Content lives in content/team/*.json, editable via the Tina CMS admin at

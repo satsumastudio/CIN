@@ -2,7 +2,10 @@ import { tinaField } from "tinacms/dist/react";
 import { Band, PageBand } from "@/components/page-band";
 import { SectionCurve } from "@/components/section-curve";
 
-type LegalSection = { heading?: string | null; paragraphs?: Array<string | null> | null };
+type LegalSection = {
+  heading?: string | null;
+  paragraphs?: Array<{ text?: string | null } | null> | null;
+};
 
 type LegalContentData = {
   title?: string | null;
@@ -55,7 +58,14 @@ export function LegalContent({ content, rule }: { content: LegalContentData; rul
                     className="mt-3 space-y-3 leading-relaxed text-brand-blue/80"
                     data-tina-field={tinaField(section, "paragraphs")}
                   >
-                    {(section.paragraphs ?? []).map((p, j) => p && <p key={j}>{linkify(p)}</p>)}
+                    {(section.paragraphs ?? []).map(
+                      (p, j) =>
+                        p?.text && (
+                          <p key={j} data-tina-field={tinaField(p, "text")}>
+                            {linkify(p.text)}
+                          </p>
+                        )
+                    )}
                   </div>
                 </div>
               )

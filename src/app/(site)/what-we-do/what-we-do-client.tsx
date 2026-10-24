@@ -103,7 +103,9 @@ export function WhatWeDoClient({
                   {(item?.bullets ?? []).map((bullet, bi) => (
                     <li key={bi} className="flex gap-3 text-sm leading-relaxed text-brand-blue/75">
                       <span aria-hidden className={`mt-2 h-1.5 w-1.5 shrink-0 rounded-full ${dots[i % dots.length]}`} />
-                      <span>{bullet}</span>
+                      <span data-tina-field={bullet ? tinaField(bullet, "text") : undefined}>
+                        {bullet?.text}
+                      </span>
                     </li>
                   ))}
                 </ul>
