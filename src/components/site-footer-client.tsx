@@ -134,7 +134,7 @@ export function SiteFooterClient({
             {/* Studio credit: kept in code rather than Tina so it can't be
                 removed by accident. */}
             <span className="inline-flex min-h-11 items-center">
-              Made by&nbsp;
+              Site by&nbsp;
               <a
                 href="https://satsuma.studio/"
                 target="_blank"
